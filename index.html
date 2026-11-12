@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#075e54">
-<title>GEDEB SMART CITY</title>
+<title>የገደብ ዘመናዊ ከተማ</title>
 <style>
 :root{--g:#075e54;--g2:#0b806e;--gold:#e7b84b;--bg:#f3f7f6;--white:#fff;--ink:#17332e;--muted:#687d78;--border:#e0eae7;--shadow:0 5px 22px #00322814}
 *{box-sizing:border-box}
@@ -16,12 +16,11 @@ button{cursor:pointer}
 a{text-decoration:none;color:inherit}
 .container{width:min(1150px,92%);margin:auto}
 header{background:white;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #0001}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0}
+.topbar{display:flex;align-items:center;gap:12px;padding:13px 0}
 .brand{display:flex;align-items:center;gap:10px}
 .logo{width:45px;height:45px;border-radius:13px;display:grid;place-items:center;background:var(--g);color:white;font-size:22px;font-weight:bold}
 .brand h1{font-size:17px;margin:0;color:var(--g)}
 .brand small{font-size:11px;color:var(--muted)}
-.language select{border:1px solid var(--border);background:white;padding:9px;border-radius:9px;color:var(--g);font-weight:bold}
 nav{display:flex;gap:20px;align-items:center;padding:0 0 12px;overflow-x:auto}
 nav a{font-size:13px;font-weight:bold;color:var(--muted);white-space:nowrap}
 nav a:hover{color:var(--g)}
@@ -103,25 +102,18 @@ footer p{font-size:13px;line-height:1.8;color:#c5dcd6}
 <div class="brand">
 <div class="logo">G</div>
 <div>
-<h1>GEDEB SMART CITY</h1>
-<small id="brandSubtitle">የገደብ ወረዳ ዲጂታል መድረክ</small>
+<h1>የገደብ ዘመናዊ ከተማ</h1>
+<small>የገደብ ወረዳ ዲጂታል መድረክ</small>
 </div>
-</div>
-<div class="language">
-<select id="languageSelect" aria-label="Select language">
-<option value="am">አማርኛ</option>
-<option value="en">English</option>
-<option value="gd">Gedeo</option>
-</select>
 </div>
 </div>
 <nav>
-<a href="#home" data-i18n="home">ዋና ገጽ</a>
-<a href="#services" data-i18n="services">አገልግሎቶች</a>
-<a href="#kebeles" data-i18n="kebeles">ቀበሌዎች</a>
-<a href="#complaint" data-i18n="complaint">ቅሬታ ማቅረቢያ</a>
-<a href="#news" data-i18n="news">ማስታወቂያ</a>
-<a href="#about" data-i18n="about">ስለ ፕሮጀክቱ</a>
+<a href="#home">ዋና ገጽ</a>
+<a href="#services">አገልግሎቶች</a>
+<a href="#kebeles">ቀበሌዎች</a>
+<a href="#complaint">ቅሬታ ማቅረቢያ</a>
+<a href="#news">ማስታወቂያ</a>
+<a href="#about">ስለ ፕሮጀክቱ</a>
 </nav>
 </div>
 </header>
@@ -129,46 +121,45 @@ footer p{font-size:13px;line-height:1.8;color:#c5dcd6}
 <main>
 <section class="hero" id="home">
 <div class="container hero-content">
-<span class="tag" data-i18n="tag">የዲጂታል ለውጥ ፕሮጀክት</span>
-<h2 data-i18n="heroTitle">የገደብ ወረዳ ወደ ዲጂታል ዘመን</h2>
-<p data-i18n="heroText">ማኅበረሰቡን፣ የሕዝብ አገልግሎቶችንና የአካባቢ መረጃዎችን በአንድ ዲጂታል መድረክ ለማገናኘት የተዘጋጀ ፕሮጀክት።</p>
+<span class="tag">የዲጂታል ለውጥ ፕሮጀክት</span>
+<h2>የገደብ ወረዳ ወደ ዲጂታል ዘመን</h2>
+<p>ማኅበረሰቡን፣ የሕዝብ አገልግሎቶችንና የአካባቢ መረጃዎችን በአንድ ዲጂታል መድረክ ለማገናኘት የተዘጋጀ ፕሮጀክት።</p>
 <div class="hero-buttons">
-<a class="btn btn-gold" href="#services" data-i18n="explore">አገልግሎቶችን ይመልከቱ</a>
-<a class="btn btn-light" href="#complaint" data-i18n="sendComplaint">ቅሬታ ያቅርቡ</a>
+<a class="btn btn-gold" href="#services">አገልግሎቶችን ይመልከቱ</a>
+<a class="btn btn-light" href="#complaint">ቅሬታ ያቅርቡ</a>
 </div>
 </div>
 </section>
 
 <div class="container">
 <div class="stats">
-<div class="stat"><strong>11</strong><span data-i18n="kebeleCount">ቀበሌዎች</span></div>
-<div class="stat"><strong>12</strong><span data-i18n="serviceCount">የአገልግሎት ክፍሎች</span></div>
-<div class="stat"><strong>3</strong><span data-i18n="languages">ቋንቋዎች</span></div>
+<div class="stat"><strong>11</strong><span>ቀበሌዎች</span></div>
+<div class="stat"><strong>12</strong><span>የአገልግሎት ክፍሎች</span></div>
+<div class="stat"><strong>1</strong><span>ቋንቋ</span></div>
 </div>
 </div>
 
 <section id="services">
 <div class="container">
 <div class="section-title">
-<h2 data-i18n="servicesTitle">የዲጂታል አገልግሎቶች</h2>
-<p data-i18n="servicesDesc">የገደብ ወረዳ 12 ዋና ዋና የአገልግሎት ክፍሎች።</p>
+<h2>የዲጂታል አገልግሎቶች</h2>
+<p>የገደብ ወረዳ 12 ዋና ዋና የአገልግሎት ክፍሎች።</p>
 </div>
 <div class="services" id="serviceGrid"></div>
 </div>
 </section>
 
-<!-- የአገልግሎት ዝርዝር መስኮት -->
 <div class="modal" id="serviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
 <div class="modal-box">
-<button class="modal-close" id="closeModal" aria-label="Close">×</button>
+<button class="modal-close" id="closeModal" aria-label="ዝጋ">×</button>
 <div class="modal-icon" id="modalIcon"></div>
 <h2 id="modalTitle"></h2>
 <p id="modalDescription"></p>
-<h3 data-i18n="availableFeatures">የሚገኙ አገልግሎቶች</h3>
+<h3>የሚገኙ አገልግሎቶች</h3>
 <ul class="detail-list" id="modalFeatures"></ul>
 <div class="modal-actions">
-<a href="#complaint" class="btn btn-green" id="modalComplaint" data-i18n="reportProblem">ችግር ሪፖርት ያድርጉ</a>
-<button class="btn btn-outline" id="modalBack" data-i18n="close">ዝጋ</button>
+<a href="#complaint" class="btn btn-green" id="modalComplaint">ችግር ሪፖርት ያድርጉ</a>
+<button class="btn btn-outline" id="modalBack">ዝጋ</button>
 </div>
 </div>
 </div>
@@ -176,8 +167,8 @@ footer p{font-size:13px;line-height:1.8;color:#c5dcd6}
 <section id="kebeles" style="background:#eaf2ef">
 <div class="container">
 <div class="section-title">
-<h2 data-i18n="kebeleTitle">የገደብ ወረዳ ቀበሌዎች</h2>
-<p data-i18n="kebeleDesc">በፕሮጀክቱ የተካተቱት 11 ቀበሌዎች።</p>
+<h2>የገደብ ወረዳ ቀበሌዎች</h2>
+<p>በፕሮጀክቱ የተካተቱት 11 ቀበሌዎች።</p>
 </div>
 <div class="kebele-grid" id="kebeleGrid"></div>
 </div>
@@ -186,35 +177,35 @@ footer p{font-size:13px;line-height:1.8;color:#c5dcd6}
 <section id="complaint">
 <div class="container">
 <div class="section-title">
-<h2 data-i18n="complaintTitle">የሕዝብ ቅሬታ ማቅረቢያ</h2>
-<p data-i18n="complaintDesc">በአካባቢዎ ያለ ችግር ለመመዝገብ ይህን ቅጽ ይጠቀሙ።</p>
+<h2>የሕዝብ ቅሬታ ማቅረቢያ</h2>
+<p>በአካባቢዎ ያለ ችግር ለመመዝገብ ይህን ቅጽ ይጠቀሙ።</p>
 </div>
 <div class="panel">
-<div class="notice" data-i18n="demoNotice">ማስታወሻ፦ ይህ የሙከራ ስሪት ነው። መረጃው በዚህ ስልክ ውስጥ ብቻ ይቀመጣል።</div>
+<div class="notice">ማስታወሻ፦ ይህ የሙከራ ስሪት ነው። መረጃው በዚህ ስልክ ውስጥ ብቻ ይቀመጣል፤ ለወረዳ አስተዳደር ገና አይላክም።</div>
 <form id="complaintForm">
 <div class="form-grid">
 <div class="field">
-<label for="kebele" data-i18n="chooseKebele">ቀበሌ ይምረጡ</label>
+<label for="kebele">ቀበሌ ይምረጡ</label>
 <select id="kebele" required></select>
 </div>
 <div class="field">
-<label for="category" data-i18n="problemType">የችግሩ ዓይነት</label>
+<label for="category">የችግሩ ዓይነት</label>
 <select id="category" required>
-<option value="" data-i18n="selectProblem">-- ይምረጡ --</option>
-<option value="Water" data-i18n="water">ውሃ</option>
-<option value="Road" data-i18n="road">መንገድ</option>
-<option value="Health" data-i18n="health">ጤና</option>
-<option value="Education" data-i18n="education">ትምህርት</option>
-<option value="Electricity" data-i18n="electricity">መብራት</option>
-<option value="Other" data-i18n="other">ሌላ</option>
+<option value="">-- ይምረጡ --</option>
+<option value="ውሃ">ውሃ</option>
+<option value="መንገድ">መንገድ</option>
+<option value="ጤና">ጤና</option>
+<option value="ትምህርት">ትምህርት</option>
+<option value="መብራት">መብራት</option>
+<option value="ሌላ">ሌላ</option>
 </select>
 </div>
 <div class="field full">
-<label for="description" data-i18n="description">የችግሩ መግለጫ</label>
-<textarea id="description" required maxlength="1000" data-placeholder="descriptionPlaceholder" placeholder="ችግሩን በግልጽ ይግለጹ..."></textarea>
+<label for="description">የችግሩ መግለጫ</label>
+<textarea id="description" required maxlength="1000" placeholder="ችግሩን በግልጽ ይግለጹ..."></textarea>
 </div>
 <div class="field full">
-<button class="btn btn-green" type="submit" data-i18n="submit">ቅሬታውን ያስገቡ</button>
+<button class="btn btn-green" type="submit">ቅሬታውን ያስገቡ</button>
 </div>
 </div>
 </form>
@@ -226,25 +217,25 @@ footer p{font-size:13px;line-height:1.8;color:#c5dcd6}
 <section id="news" style="background:#eaf2ef">
 <div class="container">
 <div class="section-title">
-<h2 data-i18n="newsTitle">የወረዳ ማስታወቂያዎች</h2>
-<p data-i18n="newsDesc">አዳዲስ መረጃዎችና ማስታወቂያዎች።</p>
+<h2>የወረዳ ማስታወቂያዎች</h2>
+<p>አዳዲስ መረጃዎችና ማስታወቂያዎች።</p>
 </div>
 <div class="announcement">
-<h3 data-i18n="newsOne">እንኳን ወደ GEDEB SMART CITY በደህና መጡ!</h3>
-<p data-i18n="newsOneText">ይህ የፕሮጀክቱ የመጀመሪያ የሙከራ ድረገጽ ነው።</p>
+<h3>እንኳን ወደ ገደብ ዘመናዊ ከተማ በደህና መጡ!</h3>
+<p>ይህ የፕሮጀክቱ የመጀመሪያ የሙከራ ድረገጽ ነው።</p>
 </div>
 <div class="announcement">
-<h3 data-i18n="newsTwo">የማኅበረሰብ ተሳትፎ</h3>
-<p data-i18n="newsTwoText">የወረዳውን ዲጂታል ለውጥ ለማሳካት የሁሉም ተሳትፎ አስፈላጊ ነው።</p>
+<h3>የማኅበረሰብ ተሳትፎ</h3>
+<p>የወረዳውን ዲጂታል ለውጥ ለማሳካት የሁሉም ተሳትፎ አስፈላጊ ነው።</p>
 </div>
 </div>
 </section>
 
 <section id="about">
 <div class="container">
-<div class="section-title"><h2 data-i18n="aboutTitle">ስለ GEDEB SMART CITY</h2></div>
+<div class="section-title"><h2>ስለ ገደብ ዘመናዊ ከተማ</h2></div>
 <div class="panel">
-<p data-i18n="aboutText" style="line-height:1.9;margin:0">GEDEB SMART CITY የገደብ ወረዳ ነዋሪዎችን፣ የአካባቢ ተቋማትንና የሕዝብ አገልግሎቶችን በዲጂታል ቴክኖሎጂ ለማገናኘት የታሰበ የማኅበረሰብ ፈጠራ ፕሮጀክት ነው።</p>
+<p style="line-height:1.9;margin:0">የገደብ ዘመናዊ ከተማ የገደብ ወረዳ ነዋሪዎችን፣ የአካባቢ ተቋማትንና የሕዝብ አገልግሎቶችን በዲጂታል ቴክኖሎጂ ለማገናኘት የታሰበ የማኅበረሰብ ፈጠራ ፕሮጀክት ነው።</p>
 </div>
 </div>
 </section>
@@ -254,188 +245,115 @@ footer p{font-size:13px;line-height:1.8;color:#c5dcd6}
 <div class="container">
 <div class="footer-grid">
 <div>
-<h3>GEDEB SMART CITY</h3>
-<p data-i18n="footerText">ቴክኖሎጂን ለማኅበረሰብ እድገት። የገደብ ወረዳ ዲጂታል ለውጥ ራዕይ።</p>
+<h3>የገደብ ዘመናዊ ከተማ</h3>
+<p>ቴክኖሎጂን ለማኅበረሰብ እድገት። የገደብ ወረዳ ዲጂታል ለውጥ ራዕይ።</p>
 </div>
 <div>
-<h3 data-i18n="contactTitle">የፕሮጀክት መረጃ</h3>
-<p>Gedeb Woreda, Ethiopia</p>
-<p>Project Initiator: ወንጌላዊ ለገሴ ጩምቡሮ</p>
+<h3>የፕሮጀክት መረጃ</h3>
+<p>ገደብ ወረዳ፣ ኢትዮጵያ</p>
+<p>የፕሮጀክቱ አነሳሽ፦ ወንጌላዊ ለገሴ ጩምቡሮ</p>
 </div>
 </div>
 <div class="copyright">
-© <span id="year"></span> GEDEB SMART CITY.
-<span data-i18n="rights">መብቱ በሕግ የተጠበቀ ነው።</span>
-<br><span data-i18n="disclaimer">ይህ ሙከራዊ ፕሮጀክት ነው፤ ኦፊሴላዊ የመንግሥት ድረገጽ አይደለም።</span>
+© <span id="year"></span> የገደብ ዘመናዊ ከተማ።
+መብቱ በሕግ የተጠበቀ ነው።
+<br>ይህ ሙከራዊ ፕሮጀክት ነው፤ ኦፊሴላዊ የመንግሥት ድረገጽ አይደለም።
 </div>
 </div>
 </footer>
 
 <script>
 const kebeles = [
+"ገደብ ባረዳ",
 "ገደብ ሴሶሌ",
-"ገደብ ባሬዳ",
+"ጋልቻ",
+"ባደሳ",
 "ገደብ ጉብታ",
-"ጌልቻ",
-"ሀሎ ሐርጡሜ",
-"ሀሎ ባርት",
-"ባንቆ ጣጣቱ",
-"ወርቃ ሣካሮ",
+"ሐሎ ባርት",
+"ወርቃ ሳካሮ",
 "ወርቃ ጨልበሳ",
+"ባንቆ ጣጣቱ",
 "ባንቆ ጨልጨለ",
-"ባንቆ ጎትት"
+"ባንቆ ጎቲት"
 ];
 
 const servicesData = [
 {
-icon:"📢",title:"Smart Complaint",desc:"የሕዝብ ቅሬታና የችግር ሪፖርት ማቅረቢያ።",
-enDesc:"Submit public complaints and report local problems.",
-am:["የሕዝብ ቅሬታ ማቅረብ።","በቀበሌ ውስጥ ያሉ ችግሮችን ሪፖርት ማድረግ።","የቅሬታ መለያ ቁጥር ማግኘት።","ወደፊት የክትትል ሥርዓት ሲገናኝ የቅሬታውን ሁኔታ መከታተል።"],
-en:["Submit community complaints.","Report local problems.","Receive a complaint reference number.","Track complaints when an official tracking system is connected."]
+icon:"📢",title:"ዘመናዊ ቅሬታ",desc:"የሕዝብ ቅሬታና የችግር ሪፖርት ማቅረቢያ።",
+features:["የሕዝብ ቅሬታ ማቅረብ።","በቀበሌ ውስጥ ያሉ ችግሮችን ሪፖርት ማድረግ።","የቅሬታ መለያ ቁጥር ማግኘት።","ወደፊት የክትትል ሥርዓት ሲገናኝ የቅሬታውን ሁኔታ መከታተል።"]
 },
 {
-icon:"ℹ️",title:"Smart Information",desc:"የወረዳ መረጃና ማስታወቂያዎች።",
-enDesc:"Woreda information and public announcements.",
-am:["የወረዳውን አጠቃላይ መረጃ ማግኘት።","የመንግሥትና የሕዝብ ማስታወቂያዎችን ማየት።","አስፈላጊ የማኅበረሰብ መረጃዎችን ማግኘት።","ስለ ሕዝብ አገልግሎቶች መረጃ ማግኘት።"],
-en:["Access general woreda information.","View public announcements.","Read important community notices.","Find information about public services."]
+icon:"ℹ️",title:"የመረጃ አገልግሎት",desc:"የወረዳ መረጃና ማስታወቂያዎች።",
+features:["የወረዳውን አጠቃላይ መረጃ ማግኘት።","የመንግሥትና የሕዝብ ማስታወቂያዎችን ማየት።","አስፈላጊ የማኅበረሰብ መረጃዎችን ማግኘት።","ስለ ሕዝብ አገልግሎቶች መረጃ ማግኘት።"]
 },
 {
-icon:"🏘️",title:"Smart Kebele",desc:"የቀበሌዎች መረጃና የአካባቢ አገልግሎቶች።",
-enDesc:"Kebele information and local services.",
-am:["ስለ 11ቱ ቀበሌዎች መረጃ ማግኘት።","የአካባቢ አገልግሎቶችን ማወቅ።","የቀበሌ አድራሻና የመገኛ መረጃ ማግኘት።","የአካባቢ ልማት መረጃዎችን ማየት።"],
-en:["View information about the 11 kebeles.","Learn about local community services.","Find verified kebele contact details.","View local development information."]
+icon:"🏘️",title:"ዘመናዊ ቀበሌ",desc:"የቀበሌዎች መረጃና የአካባቢ አገልግሎቶች።",
+features:["ስለ 11ቱ ቀበሌዎች መረጃ ማግኘት።","የአካባቢ አገልግሎቶችን ማወቅ።","የቀበሌ አድራሻና የመገኛ መረጃ ማግኘት።","የአካባቢ ልማት መረጃዎችን ማየት።"]
 },
 {
-icon:"🏥",title:"Smart Health",desc:"የጤና ተቋማትና የጤና ትምህርት መረጃ።",
-enDesc:"Health facilities and health education information.",
-am:["ስለ ጤና ጣቢያዎችና ጤና ተቋማት መረጃ ማግኘት።","የጤና ትምህርት መረጃ ማየት።","የእናቶችና የሕፃናት ጤና መረጃ ማግኘት።","የሕዝብ ጤና ማስታወቂያዎችን ማየት።"],
-en:["Find health facility information.","Read health education materials.","Access maternal and child health information.","View public health announcements."]
+icon:"🏥",title:"የጤና አገልግሎት",desc:"የጤና ተቋማትና የጤና ትምህርት መረጃ።",
+features:["ስለ ጤና ጣቢያዎችና ጤና ተቋማት መረጃ ማግኘት።","የጤና ትምህርት መረጃ ማየት።","የእናቶችና የሕፃናት ጤና መረጃ ማግኘት።","የሕዝብ ጤና ማስታወቂያዎችን ማየት።"]
 },
 {
-icon:"🎓",title:"Smart Education",desc:"የትምህርት ቤቶችና የትምህርት ዕድሎች መረጃ።",
-enDesc:"Schools and education opportunities.",
-am:["ስለ ትምህርት ቤቶች መረጃ ማግኘት።","የትምህርት ዕድሎችን ማወቅ።","የተማሪዎች ድጋፍ መረጃ ማግኘት።","የትምህርት ማስታወቂያዎችን ማየት።"],
-en:["Find school information.","Learn about education opportunities.","Access student support information.","View education announcements."]
+icon:"🎓",title:"የትምህርት አገልግሎት",desc:"የትምህርት ቤቶችና የትምህርት ዕድሎች መረጃ።",
+features:["ስለ ትምህርት ቤቶች መረጃ ማግኘት።","የትምህርት ዕድሎችን ማወቅ።","የተማሪዎች ድጋፍ መረጃ ማግኘት።","የትምህርት ማስታወቂያዎችን ማየት።"]
 },
 {
-icon:"🌱",title:"Smart Agriculture",desc:"የግብርና ምክርና የገበሬዎች መረጃ።",
-enDesc:"Agricultural advice and farmer information.",
-am:["የግብርና ምክር ማግኘት።","ለገበሬዎች የሚጠቅሙ መረጃዎችን ማየት።","ስለ ሰብልና እንስሳት እርባታ መረጃ ማግኘት።","የግብርና ማስታወቂያዎችን ማየት።"],
-en:["Access agricultural advice.","Find useful information for farmers.","Read crop and livestock information.","View agricultural announcements."]
+icon:"🌱",title:"የግብርና አገልግሎት",desc:"የግብርና ምክርና የገበሬዎች መረጃ።",
+features:["የግብርና ምክር ማግኘት።","ለገበሬዎች የሚጠቅሙ መረጃዎችን ማየት።","ስለ ሰብልና እንስሳት እርባታ መረጃ ማግኘት።","የግብርና ማስታወቂያዎችን ማየት።"]
 },
 {
-icon:"🏪",title:"Smart Business",desc:"የአካባቢ ንግድ ተቋማት መመሪያ።",
-enDesc:"Directory of local businesses.",
-am:["የአካባቢ ንግድ ተቋማትን ማወቅ።","ስለ ሱቆችና አገልግሎት ሰጪዎች መረጃ ማግኘት።","የአካባቢ ገበያ መረጃ ማየት።","የንግድ ማስታወቂያዎችን ማየት።"],
-en:["Find local businesses.","View shop and service information.","Access local market information.","View business announcements."]
+icon:"🏪",title:"የንግድ አገልግሎት",desc:"የአካባቢ ንግድ ተቋማት መመሪያ።",
+features:["የአካባቢ ንግድ ተቋማትን ማወቅ።","ስለ ሱቆችና አገልግሎት ሰጪዎች መረጃ ማግኘት።","የአካባቢ ገበያ መረጃ ማየት።","የንግድ ማስታወቂያዎችን ማየት።"]
 },
 {
-icon:"💼",title:"Smart Jobs",desc:"የሥራ ማስታወቂያና የሥራ ፈላጊዎች መረጃ።",
-enDesc:"Job announcements and job seeker information.",
-am:["የሥራ ማስታወቂያዎችን ማየት።","የሥራ ዕድሎችን ማግኘት።","ለሥራ ፈላጊዎች መረጃ ማቅረብ።","የሙያ ሥልጠናና ክህሎት ዕድሎችን ማወቅ።"],
-en:["View job announcements.","Find employment opportunities.","Access information for job seekers.","Find training and skills opportunities."]
+icon:"💼",title:"የሥራ ዕድል አገልግሎት",desc:"የሥራ ማስታወቂያና የሥራ ፈላጊዎች መረጃ።",
+features:["የሥራ ማስታወቂያዎችን ማየት።","የሥራ ዕድሎችን ማግኘት።","ለሥራ ፈላጊዎች መረጃ ማቅረብ።","የሙያ ሥልጠናና ክህሎት ዕድሎችን ማወቅ።"]
 },
 {
-icon:"💧",title:"Smart Water",desc:"የውሃ አገልግሎትና የውሃ ችግር ሪፖርት።",
-enDesc:"Water services and water problem reporting.",
-am:["ስለ ውሃ አገልግሎቶች መረጃ ማግኘት።","የውሃ አቅርቦት ችግር ሪፖርት ማድረግ።","ስለ ውሃ መገኛ ቦታዎች መረጃ ማየት።","የውሃ አገልግሎት ማስታወቂያዎችን ማየት።"],
-en:["Find water service information.","Report water supply problems.","View water point information.","Read water service announcements."]
+icon:"💧",title:"የውሃ አገልግሎት",desc:"የውሃ አገልግሎትና የውሃ ችግር ሪፖርት።",
+features:["ስለ ውሃ አገልግሎቶች መረጃ ማግኘት።","የውሃ አቅርቦት ችግር ሪፖርት ማድረግ።","ስለ ውሃ መገኛ ቦታዎች መረጃ ማየት።","የውሃ አገልግሎት ማስታወቂያዎችን ማየት።"]
 },
 {
-icon:"🛣️",title:"Smart Roads",desc:"የመንገድ መረጃና የመንገድ ችግር ሪፖርት።",
-enDesc:"Road information and road problem reporting.",
-am:["የመንገድ መረጃ ማግኘት።","የተበላሸ መንገድ ሪፖርት ማድረግ።","ስለ መንገድ ጥገና መረጃ ማየት።","የአካባቢ ትራንስፖርት መረጃ ማግኘት።"],
-en:["Find road information.","Report damaged roads.","View road maintenance information.","Access local transport information."]
+icon:"🛣️",title:"የመንገድ አገልግሎት",desc:"የመንገድ መረጃና የመንገድ ችግር ሪፖርት።",
+features:["የመንገድ መረጃ ማግኘት።","የተበላሸ መንገድ ሪፖርት ማድረግ።","ስለ መንገድ ጥገና መረጃ ማየት።","የአካባቢ ትራንስፖርት መረጃ ማግኘት።"]
 },
 {
-icon:"🤝",title:"Smart Community",desc:"የማኅበረሰብ ተሳትፎና የጋራ ሥራዎች።",
-enDesc:"Community participation and shared initiatives.",
-am:["በማኅበረሰብ ሥራዎች መሳተፍ።","የማኅበረሰብ ልማት እንቅስቃሴዎችን ማወቅ።","በበጎ ፈቃድ ሥራዎች መሳተፍ።","የሕዝብ ተሳትፎ ማስታወቂያዎችን ማየት።"],
-en:["Participate in community activities.","Learn about community development projects.","Find volunteer initiatives.","View public participation announcements."]
+icon:"🤝",title:"የማኅበረሰብ ተሳትፎ",desc:"የማኅበረሰብ ተሳትፎና የጋራ ሥራዎች።",
+features:["በማኅበረሰብ ሥራዎች መሳተፍ።","የማኅበረሰብ ልማት እንቅስቃሴዎችን ማወቅ።","በበጎ ፈቃድ ሥራዎች መሳተፍ።","የሕዝብ ተሳትፎ ማስታወቂያዎችን ማየት።"]
 },
 {
-icon:"📊",title:"Smart Administration",desc:"የአስተዳደር ክትትልና የአገልግሎት ማስተባበር።",
-enDesc:"Administrative monitoring and service coordination.",
-am:["የአስተዳደር መረጃዎችን ማግኘት።","የሕዝብ አገልግሎቶችን ማስተባበር።","የልማት እንቅስቃሴዎችን መከታተል።","የአስተዳደር ማስታወቂያዎችን ማየት።"],
-en:["Access administrative information.","Coordinate public services.","View development monitoring information.","Read administrative announcements."]
+icon:"📊",title:"የአስተዳደር አገልግሎት",desc:"የአስተዳደር ክትትልና የአገልግሎት ማስተባበር።",
+features:["የአስተዳደር መረጃዎችን ማግኘት።","የሕዝብ አገልግሎቶችን ማስተባበር።","የልማት እንቅስቃሴዎችን መከታተል።","የአስተዳደር ማስታወቂያዎችን ማየት።"]
 }
 ];
 
-const translations={
-am:{
-brandSubtitle:"የገደብ ወረዳ ዲጂታል መድረክ",
-home:"ዋና ገጽ",services:"አገልግሎቶች",kebeles:"ቀበሌዎች",complaint:"ቅሬታ ማቅረቢያ",news:"ማስታወቂያ",about:"ስለ ፕሮጀክቱ",
-tag:"የዲጂታል ለውጥ ፕሮጀክት",heroTitle:"የገደብ ወረዳ ወደ ዲጂታል ዘመን",
-heroText:"ማኅበረሰቡን፣ የሕዝብ አገልግሎቶችንና የአካባቢ መረጃዎችን በአንድ ዲጂታል መድረክ ለማገናኘት የተዘጋጀ ፕሮጀክት።",
-explore:"አገልግሎቶችን ይመልከቱ",sendComplaint:"ቅሬታ ያቅርቡ",kebeleCount:"ቀበሌዎች",serviceCount:"የአገልግሎት ክፍሎች",languages:"ቋንቋዎች",
-servicesTitle:"የዲጂታል አገልግሎቶች",servicesDesc:"የገደብ ወረዳ 12 ዋና ዋና የአገልግሎት ክፍሎች።",
-openService:"ዝርዝሩን ይክፈቱ →",availableFeatures:"የሚገኙ አገልግሎቶች",reportProblem:"ችግር ሪፖርት ያድርጉ",close:"ዝጋ",
-kebeleTitle:"የገደብ ወረዳ ቀበሌዎች",kebeleDesc:"በፕሮጀክቱ የተካተቱት 11 ቀበሌዎች።",
-complaintTitle:"የሕዝብ ቅሬታ ማቅረቢያ",complaintDesc:"በአካባቢዎ ያለ ችግር ለመመዝገብ ይህን ቅጽ ይጠቀሙ።",
-demoNotice:"ማስታወሻ፦ ይህ የሙከራ ስሪት ነው። መረጃው በዚህ ስልክ ውስጥ ብቻ ይቀመጣል፤ ለወረዳ አስተዳደር ገና አይላክም።",
-chooseKebele:"ቀበሌ ይምረጡ",selectKebele:"-- ቀበሌ ይምረጡ --",problemType:"የችግሩ ዓይነት",selectProblem:"-- ይምረጡ --",
-water:"ውሃ",road:"መንገድ",health:"ጤና",education:"ትምህርት",electricity:"መብራት",other:"ሌላ",
-description:"የችግሩ መግለጫ",descriptionPlaceholder:"ችግሩን በግልጽ ይግለጹ...",submit:"ቅሬታውን ያስገቡ",
-newsTitle:"የወረዳ ማስታወቂያዎች",newsDesc:"አዳዲስ መረጃዎችና ማስታወቂያዎች።",
-newsOne:"እንኳን ወደ GEDEB SMART CITY በደህና መጡ!",newsOneText:"ይህ የፕሮጀክቱ የመጀመሪያ የሙከራ ድረገጽ ነው።",
-newsTwo:"የማኅበረሰብ ተሳትፎ",newsTwoText:"የወረዳውን ዲጂታል ለውጥ ለማሳካት የሁሉም ተሳትፎ አስፈላጊ ነው።",
-aboutTitle:"ስለ GEDEB SMART CITY",aboutText:"GEDEB SMART CITY የገደብ ወረዳ ነዋሪዎችን፣ የአካባቢ ተቋማትንና የሕዝብ አገልግሎቶችን በዲጂታል ቴክኖሎጂ ለማገናኘት የታሰበ የማኅበረሰብ ፈጠራ ፕሮጀክት ነው።",
-footerText:"ቴክኖሎጂን ለማኅበረሰብ እድገት። የገደብ ወረዳ ዲጂታል ለውጥ ራዕይ።",
-contactTitle:"የፕሮጀክት መረጃ",rights:"መብቱ በሕግ የተጠበቀ ነው።",
-disclaimer:"ይህ ሙከራዊ ፕሮጀክት ነው፤ ኦፊሴላዊ የመንግሥት ድረገጽ አይደለም።",
-saved:"ቅሬታዎ በዚህ ስልክ ላይ ተመዝግቧል። መለያ ቁጥር፦",
-saveError:"መረጃውን ማስቀመጥ አልተቻለም።",required:"እባክዎ ሁሉንም ቦታዎች ይሙሉ።",
-gdNotice:"የገደኦኛ ትርጉም እስኪረጋገጥ ድረስ ለጊዜው በአማርኛ ይታያል።"
-},
-en:{
-brandSubtitle:"Gedeb Woreda Digital Platform",
-home:"Home",services:"Services",kebeles:"Kebeles",complaint:"Submit a Complaint",news:"Announcements",about:"About",
-tag:"DIGITAL TRANSFORMATION PROJECT",heroTitle:"Gedeb Woreda Into the Digital Era",
-heroText:"A digital platform designed to connect communities, public services and local information in one place.",
-explore:"Explore Services",sendComplaint:"Submit a Complaint",kebeleCount:"Kebeles",serviceCount:"Service Modules",languages:"Languages",
-servicesTitle:"Digital Services",servicesDesc:"The 12 main service modules of Gedeb Woreda.",
-openService:"Open details →",availableFeatures:"Available services",reportProblem:"Report a Problem",close:"Close",
-kebeleTitle:"Gedeb Woreda Kebeles",kebeleDesc:"The 11 kebeles included in this project.",
-complaintTitle:"Public Complaint Form",complaintDesc:"Use this form to record a problem in your area.",
-demoNotice:"Notice: This is a prototype. Submitted information is stored only on this device and is not yet sent to the woreda administration.",
-chooseKebele:"Select Kebele",selectKebele:"-- Select Kebele --",problemType:"Problem Type",selectProblem:"-- Select --",
-water:"Water",road:"Road",health:"Health",education:"Education",electricity:"Electricity",other:"Other",
-description:"Problem Description",descriptionPlaceholder:"Describe the problem clearly...",submit:"Submit Complaint",
-newsTitle:"Woreda Announcements",newsDesc:"Latest information and announcements.",
-newsOne:"Welcome to GEDEB SMART CITY!",newsOneText:"This is the first prototype website of the project.",
-newsTwo:"Community Participation",newsTwoText:"Everyone's participation is important for the digital transformation of the woreda.",
-aboutTitle:"About GEDEB SMART CITY",
-aboutText:"GEDEB SMART CITY is a community innovation project intended to connect Gedeb Woreda residents, local institutions and public services through digital technology.",
-footerText:"Technology for community development. A digital transformation vision for Gedeb Woreda.",
-contactTitle:"Project Information",rights:"All rights reserved.",
-disclaimer:"This is a prototype project, not an official government website.",
-saved:"Your complaint has been saved on this device. Reference number:",saveError:"The information could not be saved.",
-required:"Please complete all required fields.",gdNotice:"Gedeo translation is not yet verified. Amharic will be displayed for now."
-}
-};
-
-let currentLanguage="am";
-let activeServiceIndex=null;
 const modal=document.getElementById("serviceModal");
+let activeServiceIndex=null;
 
 function renderKebeles(){
 const grid=document.getElementById("kebeleGrid");
 const select=document.getElementById("kebele");
 grid.innerHTML="";
 select.innerHTML="";
+
 const first=document.createElement("option");
 first.value="";
-first.textContent=translations[currentLanguage].selectKebele;
+first.textContent="-- ቀበሌ ይምረጡ --";
 first.disabled=true;
 first.selected=true;
 select.appendChild(first);
+
 kebeles.forEach((name,index)=>{
 const div=document.createElement("div");
 div.className="kebele";
+
 const number=document.createElement("span");
 number.textContent=String(index+1).padStart(2,"0");
+
 div.append(number,document.createTextNode(" "+name));
 grid.appendChild(div);
+
 const option=document.createElement("option");
 option.value=name;
 option.textContent=name;
@@ -445,22 +363,26 @@ select.appendChild(option);
 
 function renderServices(){
 const grid=document.getElementById("serviceGrid");
-const t=translations[currentLanguage];
 grid.innerHTML="";
+
 servicesData.forEach((service,index)=>{
 const card=document.createElement("button");
 card.type="button";
 card.className="service";
-card.dataset.service=index;
+
 const icon=document.createElement("div");
 icon.className="emoji";
 icon.textContent=service.icon;
+
 const title=document.createElement("h3");
 title.textContent=service.title;
+
 const desc=document.createElement("p");
-desc.textContent=currentLanguage==="en"?service.enDesc:service.desc;
+desc.textContent=service.desc;
+
 const open=document.createElement("small");
-open.textContent=t.openService;
+open.textContent="ዝርዝሩን ይክፈቱ ←";
+
 card.append(icon,title,desc,open);
 card.addEventListener("click",()=>openService(index));
 grid.appendChild(card);
@@ -470,19 +392,24 @@ grid.appendChild(card);
 function openService(index){
 const item=servicesData[index];
 if(!item)return;
+
 activeServiceIndex=index;
+
 document.getElementById("modalIcon").textContent=item.icon;
 document.getElementById("modalTitle").textContent=item.title;
-document.getElementById("modalDescription").textContent=currentLanguage==="en"?item.enDesc:item.desc;
+document.getElementById("modalDescription").textContent=item.desc;
+
 const list=document.getElementById("modalFeatures");
 list.innerHTML="";
-const features=currentLanguage==="en"?item.en:item.am;
-features.forEach(feature=>{
+
+item.features.forEach(feature=>{
 const li=document.createElement("li");
 li.textContent=feature;
 list.appendChild(li);
 });
+
 document.getElementById("modalComplaint").style.display=index===0?"inline-block":"none";
+
 modal.classList.add("show");
 document.body.style.overflow="hidden";
 document.getElementById("closeModal").focus();
@@ -496,78 +423,56 @@ activeServiceIndex=null;
 
 document.getElementById("closeModal").addEventListener("click",closeService);
 document.getElementById("modalBack").addEventListener("click",closeService);
+
 modal.addEventListener("click",event=>{
 if(event.target===modal)closeService();
 });
+
 document.addEventListener("keydown",event=>{
 if(event.key==="Escape"&&modal.classList.contains("show"))closeService();
 });
+
 document.getElementById("modalComplaint").addEventListener("click",closeService);
-
-function changeLanguage(lang,showNotice=false){
-if(lang==="gd"){
-currentLanguage="am";
-document.getElementById("languageSelect").value="gd";
-document.documentElement.lang="am";
-applyTranslations();
-if(showNotice)alert(translations.am.gdNotice);
-return;
-}
-currentLanguage=lang==="en"?"en":"am";
-document.documentElement.lang=currentLanguage;
-applyTranslations();
-}
-
-function applyTranslations(){
-const t=translations[currentLanguage];
-document.querySelectorAll("[data-i18n]").forEach(element=>{
-const key=element.dataset.i18n;
-if(t[key]!==undefined)element.textContent=t[key];
-});
-document.querySelectorAll("[data-placeholder]").forEach(element=>{
-const key=element.dataset.placeholder;
-if(t[key])element.placeholder=t[key];
-});
-document.getElementById("brandSubtitle").textContent=t.brandSubtitle;
-renderServices();
-renderKebeles();
-if(activeServiceIndex!==null)openService(activeServiceIndex);
-}
-
-document.getElementById("languageSelect").addEventListener("change",event=>{
-changeLanguage(event.target.value,true);
-});
 
 document.getElementById("complaintForm").addEventListener("submit",function(event){
 event.preventDefault();
-const t=translations[currentLanguage];
+
 const kebele=document.getElementById("kebele").value;
 const category=document.getElementById("category").value;
 const description=document.getElementById("description").value.trim();
+
 if(!kebele||!category||!description){
-alert(t.required);
+alert("እባክዎ ሁሉንም ቦታዎች ይሙሉ።");
 return;
 }
+
 const complaint={
 id:"GSC-"+Date.now(),
 kebele,
 category,
 description,
-date:new Date().toLocaleString()
+date:new Date().toLocaleString("am-ET")
 };
+
 try{
 const saved=JSON.parse(localStorage.getItem("gedebComplaints")||"[]");
 saved.push(complaint);
 localStorage.setItem("gedebComplaints",JSON.stringify(saved));
-document.getElementById("formMessage").textContent=t.saved+" "+complaint.id;
+
+document.getElementById("formMessage").textContent=
+"ቅሬታዎ በዚህ ስልክ ላይ ተመዝግቧል። መለያ ቁጥር፦ "+complaint.id;
+
 this.reset();
 }catch(error){
-document.getElementById("formMessage").textContent=t.saveError;
+document.getElementById("formMessage").textContent=
+"መረጃውን ማስቀመጥ አልተቻለም።";
 }
 });
 
 document.getElementById("year").textContent=new Date().getFullYear();
-changeLanguage("am");
+
+renderKebeles();
+renderServices();
 </script>
 </body>
 </html>
