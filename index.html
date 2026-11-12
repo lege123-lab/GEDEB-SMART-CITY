@@ -1,474 +1,73 @@
-
-<!DOCTYPE html>
-<html lang="am">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#075e54">
-<title>የገደብ ዘመናዊ ከተማ</title>
-<style>
-:root{--g:#075e54;--g2:#0b806e;--gold:#e7b84b;--bg:#f3f7f6;--white:#fff;--ink:#17332e;--muted:#687d78;--border:#e0eae7;--shadow:0 5px 22px #00322814}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,"Noto Sans Ethiopic",sans-serif;background:var(--bg);color:var(--ink)}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-.container{width:min(1150px,92%);margin:auto}
-header{background:white;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #0001}
-.topbar{display:flex;align-items:center;gap:12px;padding:13px 0}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:45px;height:45px;border-radius:13px;display:grid;place-items:center;background:var(--g);color:white;font-size:22px;font-weight:bold}
-.brand h1{font-size:17px;margin:0;color:var(--g)}
-.brand small{font-size:11px;color:var(--muted)}
-nav{display:flex;gap:20px;align-items:center;padding:0 0 12px;overflow-x:auto}
-nav a{font-size:13px;font-weight:bold;color:var(--muted);white-space:nowrap}
-nav a:hover{color:var(--g)}
-.hero{background:linear-gradient(120deg,#064d45,#0b806e);color:white;padding:55px 0 48px}
-.hero-content{max-width:720px}
-.tag{display:inline-block;background:#ffffff24;padding:7px 12px;border-radius:30px;font-size:12px}
-.hero h2{font-size:clamp(29px,5vw,45px);line-height:1.2;margin:18px 0 12px}
-.hero p{line-height:1.8;color:#e1f1ed;max-width:650px}
-.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
-.btn{border:0;border-radius:9px;padding:12px 18px;font-weight:bold;display:inline-block}
-.btn-gold{background:var(--gold);color:#26352d}
-.btn-light{background:white;color:var(--g)}
-.btn-green{background:var(--g);color:white}
-.btn-outline{background:white;border:1px solid var(--border);color:var(--g)}
-section{padding:38px 0}
-.section-title{margin-bottom:20px}
-.section-title h2{margin:0 0 7px;font-size:23px;color:var(--g)}
-.section-title p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:-22px;position:relative;z-index:2}
-.stat{background:white;border-radius:13px;padding:17px;box-shadow:var(--shadow);text-align:center}
-.stat strong{display:block;font-size:23px;color:var(--g)}
-.stat span{font-size:12px;color:var(--muted)}
-.services{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.service{width:100%;text-align:left;background:white;border:1px solid var(--border);border-radius:13px;padding:18px 14px;min-height:155px;transition:.2s;cursor:pointer;color:var(--ink)}
-.service:hover,.service:focus{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--g);outline:2px solid #075e5422}
-.service .emoji{font-size:27px}
-.service h3{font-size:15px;margin:12px 0 6px;color:var(--g)}
-.service p{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
-.service small{display:block;margin-top:12px;color:var(--g);font-weight:bold}
-.kebele-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.kebele{background:white;border:1px solid var(--border);border-radius:10px;padding:14px;font-weight:bold;font-size:14px}
-.kebele span{color:var(--g);margin-right:7px}
-.panel{background:white;border:1px solid var(--border);border-radius:15px;padding:22px;box-shadow:var(--shadow)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.field{display:flex;flex-direction:column;gap:7px}
-.field.full{grid-column:1/-1}
-.field label{font-size:13px;font-weight:bold}
-.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #d8e4e0;border-radius:9px;background:#fff;outline:none}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--g)}
-.field textarea{min-height:100px;resize:vertical}
-.notice{background:#fff8e7;border-left:4px solid var(--gold);border-radius:8px;padding:12px;font-size:12px;line-height:1.7;color:#665326;margin-bottom:15px}
-.announcement{background:white;border:1px solid var(--border);border-radius:12px;padding:17px;margin-bottom:10px}
-.announcement h3{font-size:15px;color:var(--g);margin:0 0 7px}
-.announcement p{font-size:13px;color:var(--muted);margin:0;line-height:1.7}
-footer{background:#073f39;color:#e5f2ef;padding:30px 0;margin-top:25px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}
-footer h3{margin-top:0}
-footer p{font-size:13px;line-height:1.8;color:#c5dcd6}
-.copyright{border-top:1px solid #ffffff25;padding-top:15px;margin-top:18px;font-size:12px;color:#b8d0ca}
-.modal{display:none;position:fixed;inset:0;background:#001e1acc;z-index:100;padding:15px;overflow-y:auto}
-.modal.show{display:flex;align-items:center;justify-content:center}
-.modal-box{background:white;width:min(650px,100%);border-radius:16px;padding:24px;position:relative;box-shadow:0 15px 50px #0003;max-height:92vh;overflow-y:auto}
-.modal-close{position:absolute;right:15px;top:12px;border:0;background:#edf4f1;border-radius:50%;width:38px;height:38px;font-size:23px;color:var(--g)}
-.modal-icon{font-size:40px;margin-bottom:10px}
-.modal-box h2{color:var(--g);margin:5px 45px 12px 0}
-.modal-box p{line-height:1.8;color:var(--muted);font-size:14px}
-.modal-box h3{color:var(--g);font-size:16px}
-.detail-list{padding-left:22px;line-height:2;color:var(--ink);font-size:14px}
-.detail-list li{margin-bottom:5px}
-.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-#formMessage{font-size:13px;color:var(--g);font-weight:bold;line-height:1.7}
-@media(max-width:800px){.services{grid-template-columns:repeat(2,1fr)}.kebele-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){
-.brand h1{font-size:14px}.brand small{font-size:9px}.logo{width:39px;height:39px}
-.hero{padding:40px 0}.stats{gap:7px}.stat{padding:13px 5px}
-.stat strong{font-size:19px}.stat span{font-size:10px}
-.services{gap:9px}.service{padding:14px 11px;min-height:150px}
-.service h3{font-size:13px}.service p{font-size:11px}
-.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
-.footer-grid{grid-template-columns:1fr}.modal{padding:8px}.modal-box{padding:20px}
-}
+```html
+footer{background:#073f39;color:#e5f2ef;padding:32px 0;margin-top:25px}.footer-grid{display:grid;grid-template-columns:2fr 1fr;gap:20px}footer h3{margin-top:0}footer p{font-size:13px;line-height:1.8;color:#c5dcd6}.copyright{border-top:1px solid #ffffff25;padding-top:15px;margin-top:18px;font-size:12px;color:#b8d0ca}
+.modal{display:none;position:fixed;inset:0;background:#001e1acc;z-index:100;padding:15px;overflow-y:auto}.modal.show{display:flex;align-items:center;justify-content:center}.modal-box{background:white;width:min(680px,100%);border-radius:17px;padding:25px;position:relative;box-shadow:0 15px 50px #0003;max-height:92vh;overflow-y:auto}.modal-close{position:absolute;right:15px;top:12px;border:0;background:#edf4f1;border-radius:50%;width:38px;height:38px;font-size:23px;color:var(--g)}.modal-icon{font-size:40px;margin-bottom:10px}.modal-box h2{color:var(--g);margin:5px 45px 12px 0}.modal-box p{line-height:1.8;color:var(--muted);font-size:14px}.modal-box h3{color:var(--g);font-size:16px}.detail-list{padding-left:22px;line-height:2;color:var(--ink);font-size:14px}.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+#adminSection{background:#edf4f1}.muted{color:var(--muted);font-size:12px;line-height:1.7}.hidden{display:none!important}
+@media(max-width:900px){.services{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){.services{grid-template-columns:repeat(2,1fr)}.kebele-grid{grid-template-columns:repeat(2,1fr)}.quick-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.brand h1{font-size:14px}.brand small{font-size:9px}.logo{width:40px;height:40px}.online-state{font-size:10px;padding:6px 8px}.hero{padding:42px 0}.stats{gap:7px}.stat{padding:13px 5px}.stat strong{font-size:20px}.stat span{font-size:10px}.services{gap:9px}.service{padding:14px 11px;min-height:158px}.service h3{font-size:13px}.service p{font-size:11px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.modal{padding:8px}.modal-box{padding:20px}}
+@media print{header,.hero-buttons,.toolbar,.btn,form,#adminSection,footer{display:none!important}body{background:white}.panel,.stat,.service{box-shadow:none}}
 </style>
 </head>
 <body>
-
-<header>
-<div class="container">
-<div class="topbar">
-<div class="brand">
-<div class="logo">G</div>
-<div>
-<h1>የገደብ ዘመናዊ ከተማ</h1>
-<small>የገደብ ወረዳ ዲጂታል መድረክ</small>
-</div>
-</div>
-</div>
-<nav>
-<a href="#home">ዋና ገጽ</a>
-<a href="#services">አገልግሎቶች</a>
-<a href="#kebeles">ቀበሌዎች</a>
-<a href="#complaint">ቅሬታ ማቅረቢያ</a>
-<a href="#news">ማስታወቂያ</a>
-<a href="#about">ስለ ፕሮጀክቱ</a>
-</nav>
-</div>
-</header>
-
+<header><div class="container">
+ <div class="topbar"><div class="brand"><div class="logo">G</div><div><h1>የገደብ ዘመናዊ ከተማ</h1><small>የገደብ ወረዳ ዲጂታል መድረክ</small></div></div><div class="online-state" id="connectionState">● ሁኔታ በመፈተሽ ላይ</div></div>
+ <nav aria-label="ዋና ማውጫ"><a href="#home">ዋና ገጽ</a><a href="#quick">ፈጣን አገልግሎት</a><a href="#services">አገልግሎቶች</a><a href="#kebeles">ቀበሌዎች</a><a href="#complaint">ቅሬታ ማቅረቢያ</a><a href="#track">ቅሬታ መከታተያ</a><a href="#news">ማስታወቂያ</a><a href="#about">ስለ ፕሮጀክቱ</a><a href="#adminSection">የሠራተኛ ሙከራ</a></nav>
+</div></header>
 <main>
-<section class="hero" id="home">
-<div class="container hero-content">
-<span class="tag">የዲጂታል ለውጥ ፕሮጀክት</span>
-<h2>የገደብ ወረዳ ወደ ዲጂታል ዘመን</h2>
-<p>ማኅበረሰቡን፣ የሕዝብ አገልግሎቶችንና የአካባቢ መረጃዎችን በአንድ ዲጂታል መድረክ ለማገናኘት የተዘጋጀ ፕሮጀክት።</p>
-<div class="hero-buttons">
-<a class="btn btn-gold" href="#services">አገልግሎቶችን ይመልከቱ</a>
-<a class="btn btn-light" href="#complaint">ቅሬታ ያቅርቡ</a>
-</div>
-</div>
-</section>
-
-<div class="container">
-<div class="stats">
-<div class="stat"><strong>11</strong><span>ቀበሌዎች</span></div>
-<div class="stat"><strong>12</strong><span>የአገልግሎት ክፍሎች</span></div>
-<div class="stat"><strong>1</strong><span>ቋንቋ</span></div>
-</div>
-</div>
-
-<section id="services">
-<div class="container">
-<div class="section-title">
-<h2>የዲጂታል አገልግሎቶች</h2>
-<p>የገደብ ወረዳ 12 ዋና ዋና የአገልግሎት ክፍሎች።</p>
-</div>
-<div class="services" id="serviceGrid"></div>
-</div>
-</section>
-
-<div class="modal" id="serviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-<div class="modal-box">
-<button class="modal-close" id="closeModal" aria-label="ዝጋ">×</button>
-<div class="modal-icon" id="modalIcon"></div>
-<h2 id="modalTitle"></h2>
-<p id="modalDescription"></p>
-<h3>የሚገኙ አገልግሎቶች</h3>
-<ul class="detail-list" id="modalFeatures"></ul>
-<div class="modal-actions">
-<a href="#complaint" class="btn btn-green" id="modalComplaint">ችግር ሪፖርት ያድርጉ</a>
-<button class="btn btn-outline" id="modalBack">ዝጋ</button>
-</div>
-</div>
-</div>
-
-<section id="kebeles" style="background:#eaf2ef">
-<div class="container">
-<div class="section-title">
-<h2>የገደብ ወረዳ ቀበሌዎች</h2>
-<p>በፕሮጀክቱ የተካተቱት 11 ቀበሌዎች።</p>
-</div>
-<div class="kebele-grid" id="kebeleGrid"></div>
-</div>
-</section>
-
-<section id="complaint">
-<div class="container">
-<div class="section-title">
-<h2>የሕዝብ ቅሬታ ማቅረቢያ</h2>
-<p>በአካባቢዎ ያለ ችግር ለመመዝገብ ይህን ቅጽ ይጠቀሙ።</p>
-</div>
-<div class="panel">
-<div class="notice">ማስታወሻ፦ ይህ የሙከራ ስሪት ነው። መረጃው በዚህ ስልክ ውስጥ ብቻ ይቀመጣል፤ ለወረዳ አስተዳደር ገና አይላክም።</div>
-<form id="complaintForm">
-<div class="form-grid">
-<div class="field">
-<label for="kebele">ቀበሌ ይምረጡ</label>
-<select id="kebele" required></select>
-</div>
-<div class="field">
-<label for="category">የችግሩ ዓይነት</label>
-<select id="category" required>
-<option value="">-- ይምረጡ --</option>
-<option value="ውሃ">ውሃ</option>
-<option value="መንገድ">መንገድ</option>
-<option value="ጤና">ጤና</option>
-<option value="ትምህርት">ትምህርት</option>
-<option value="መብራት">መብራት</option>
-<option value="ሌላ">ሌላ</option>
-</select>
-</div>
-<div class="field full">
-<label for="description">የችግሩ መግለጫ</label>
-<textarea id="description" required maxlength="1000" placeholder="ችግሩን በግልጽ ይግለጹ..."></textarea>
-</div>
-<div class="field full">
-<button class="btn btn-green" type="submit">ቅሬታውን ያስገቡ</button>
-</div>
-</div>
-</form>
-<p id="formMessage" role="status" aria-live="polite"></p>
-</div>
-</div>
-</section>
-
-<section id="news" style="background:#eaf2ef">
-<div class="container">
-<div class="section-title">
-<h2>የወረዳ ማስታወቂያዎች</h2>
-<p>አዳዲስ መረጃዎችና ማስታወቂያዎች።</p>
-</div>
-<div class="announcement">
-<h3>እንኳን ወደ ገደብ ዘመናዊ ከተማ በደህና መጡ!</h3>
-<p>ይህ የፕሮጀክቱ የመጀመሪያ የሙከራ ድረገጽ ነው።</p>
-</div>
-<div class="announcement">
-<h3>የማኅበረሰብ ተሳትፎ</h3>
-<p>የወረዳውን ዲጂታል ለውጥ ለማሳካት የሁሉም ተሳትፎ አስፈላጊ ነው።</p>
-</div>
-</div>
-</section>
-
-<section id="about">
-<div class="container">
-<div class="section-title"><h2>ስለ ገደብ ዘመናዊ ከተማ</h2></div>
-<div class="panel">
-<p style="line-height:1.9;margin:0">የገደብ ዘመናዊ ከተማ የገደብ ወረዳ ነዋሪዎችን፣ የአካባቢ ተቋማትንና የሕዝብ አገልግሎቶችን በዲጂታል ቴክኖሎጂ ለማገናኘት የታሰበ የማኅበረሰብ ፈጠራ ፕሮጀክት ነው።</p>
-</div>
-</div>
-</section>
+<section class="hero" id="home"><div class="container hero-content"><span class="tag">የዲጂታል ለውጥ ፕሮጀክት</span><h2>የገደብ ወረዳ ወደ ዲጂታል ዘመን</h2><p>ማኅበረሰቡን፣ የሕዝብ አገልግሎቶችንና የአካባቢ መረጃዎችን በአንድ ቀላልና ተደራሽ ዲጂታል መድረክ ለማገናኘት የተዘጋጀ የማኅበረሰብ ፈጠራ ፕሮጀክት።</p><div class="hero-buttons"><a class="btn btn-gold" href="#services">አገልግሎቶችን ይመልከቱ</a><a class="btn btn-light" href="#complaint">ቅሬታ ያቅርቡ</a></div></div></section>
+<div class="container"><div class="stats"><div class="stat"><strong>11</strong><span>ቀበሌዎች</span></div><div class="stat"><strong>12</strong><span>የአገልግሎት ክፍሎች</span></div><div class="stat"><strong>24/7</strong><span>መረጃ ማግኛ (በመድረኩ)</span></div></div></div>
+<section id="quick"><div class="container"><div class="section-title"><h2>ፈጣን መዳረሻ</h2><p>ብዙ ጊዜ የሚፈለጉ አገልግሎቶችን በቀጥታ ይክፈቱ።</p></div><div class="quick-grid"><a class="quick" href="#complaint"><span class="quick-icon">📢</span><span><b>ቅሬታ ማቅረብ</b><small>የአካባቢ ችግር ይመዝግቡ</small></span></a><a class="quick" href="#track"><span class="quick-icon">🔎</span><span><b>ቅሬታ መከታተል</b><small>የመለያ ቁጥር ተጠቅመው ይፈልጉ</small></span></a><a class="quick" href="#kebeles"><span class="quick-icon">🏘️</span><span><b>ቀበሌዎች</b><small>የ11ቱን ቀበሌ ዝርዝር ይመልከቱ</small></span></a></div></div></section>
+<section id="services"><div class="container"><div class="section-title"><h2>የዲጂታል አገልግሎቶች</h2><p>የገደብ ወረዳ 12 ዋና ዋና የአገልግሎት ክፍሎች።</p></div><div class="toolbar"><input class="search" id="serviceSearch" type="search" placeholder="አገልግሎት በስም ይፈልጉ..." aria-label="አገልግሎት ፈልግ"></div><div class="services" id="serviceGrid"></div></div></section>
+<div class="modal" id="serviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-box"><button class="modal-close" id="closeModal" aria-label="ዝጋ">×</button><div class="modal-icon" id="modalIcon"></div><h2 id="modalTitle"></h2><p id="modalDescription"></p><h3>የሚገኙ አገልግሎቶች</h3><ul class="detail-list" id="modalFeatures"></ul><div class="modal-actions"><a href="#complaint" class="btn btn-green" id="modalComplaint">ችግር ሪፖርት ያድርጉ</a><button class="btn btn-outline" id="modalBack">ዝጋ</button></div></div></div>
+<section id="kebeles" style="background:#eaf2ef"><div class="container"><div class="section-title"><h2>የገደብ ወረዳ ቀበሌዎች</h2><p>በፕሮጀክቱ የተካተቱት 11 ቀበሌዎች።</p></div><div class="kebele-grid" id="kebeleGrid"></div></div></section>
+<section id="complaint"><div class="container"><div class="section-title"><h2>የሕዝብ ቅሬታ ማቅረቢያ</h2><p>በአካባቢዎ ያለ ችግር ለመመዝገብ ይህን ቅጽ ይጠቀሙ።</p></div><div class="panel"><div class="notice">አስፈላጊ፦ ይህ ስሪት ቅሬታዎችን በዚህ መሣሪያ ላይ ብቻ ያስቀምጣል። ወደ ወረዳ አስተዳደር በቀጥታ አይላክም። እውነተኛ የመላኪያ አገልግሎት ለማስጀመር የተጠበቀ ሰርቨር ያስፈልጋል።</div><form id="complaintForm"><div class="form-grid"><div class="field"><label for="kebele">ቀበሌ ይምረጡ</label><select id="kebele" required></select></div><div class="field"><label for="category">የችግሩ ዓይነት</label><select id="category" required><option value="">-- ይምረጡ --</option><option>ውሃ</option><option>መንገድ</option><option>ጤና</option><option>ትምህርት</option><option>መብራት</option><option>ንጽህና</option><option>አስተዳደር</option><option>ሌላ</option></select></div><div class="field"><label for="reporter">ስም (አማራጭ)</label><input id="reporter" maxlength="80" autocomplete="name" placeholder="ስምዎን ያስገቡ"></div><div class="field"><label for="contact">ስልክ (አማራጭ)</label><input id="contact" type="tel" maxlength="25" autocomplete="tel" placeholder="የመገኛ ስልክ"></div><div class="field full"><label for="description">የችግሩ መግለጫ</label><textarea id="description" required maxlength="1000" placeholder="ችግሩን በግልጽ ይግለጹ..."></textarea><small class="muted" id="charCount">0/1000</small></div><div class="field full"><label style="display:flex;gap:8px;align-items:flex-start;font-weight:normal"><input type="checkbox" id="consent" required style="width:auto;margin-top:3px"> ያስገባሁት መረጃ ለቅሬታ ምዝገባና ክትትል እንዲጠቀምበት እስማማለሁ።</label></div><div class="field full"><button class="btn btn-green" type="submit">ቅሬታውን ያስገቡ</button></div></div></form><div id="formMessage" role="status" aria-live="polite"></div></div></div></section>
+<section id="track" style="background:#eaf2ef"><div class="container"><div class="section-title"><h2>የቅሬታ ሁኔታ መከታተያ</h2><p>በምዝገባ ጊዜ የተሰጠዎትን የመለያ ቁጥር ያስገቡ።</p></div><div class="panel"><div class="track-row"><input id="trackId" placeholder="ምሳሌ፦ GSC-..." aria-label="የቅሬታ መለያ ቁጥር"><button class="btn btn-green" id="trackBtn">ፈልግ</button></div><div id="trackResult" aria-live="polite"></div></div></div></section>
+<section id="news"><div class="container"><div class="section-title"><h2>የወረዳ ማስታወቂያዎች</h2><p>አዳዲስ መረጃዎችና ማስታወቂያዎች።</p></div><div class="announcement"><h3>እንኳን ወደ ገደብ ዘመናዊ ከተማ በደህና መጡ!</h3><p>ይህ የፕሮጀክቱ የሙከራ ድረገጽ ነው።</p><time>የፕሮጀክት መረጃ</time></div><div class="announcement"><h3>የማኅበረሰብ ተሳትፎ</h3><p>የወረዳውን ዲጂታል ለውጥ ለማሳካት የሁሉም ተሳትፎ አስፈላጊ ነው።</p></div></div></section>
+<section id="adminSection"><div class="container"><div class="section-title"><h2>የሠራተኛ መቆጣጠሪያ — የሙከራ ማሳያ</h2><p>በዚህ መሣሪያ ላይ የተመዘገቡ ቅሬታዎችን ማየትና ሁኔታ መቀየር ይቻላል።</p></div><div class="notice"><b>የደህንነት ማስጠንቀቂያ፦</b> ይህ የሙከራ ማሳያ ነው፤ የተጠበቀ የሠራተኛ መግቢያ አይደለም። በዚህ የማይጠበቅ ገጽ ላይ የእውነተኛ ዜጎችን ግላዊ መረጃ አታስቀምጡ። ኦፊሴላዊ አጠቃቀም ከመጀመሩ በፊት የሰርቨር ማረጋገጫና የተጠቃሚ ፈቃድ መዋቅር ያስፈልጋል።</div><div class="panel"><div class="admin-tools"><button class="btn btn-outline" id="refreshAdmin">ዝርዝሩን አድስ</button><button class="btn btn-outline" id="exportCsv">ወደ CSV አውርድ</button><button class="btn btn-danger" id="clearDemo">የሙከራ መረጃን አጽዳ</button></div><div id="adminSummary" class="muted"></div><div class="admin-table-wrap"><table><thead><tr><th>መለያ</th><th>ቀን</th><th>ቀበሌ</th><th>ዓይነት</th><th>መግለጫ</th><th>ሁኔታ</th></tr></thead><tbody id="adminRows"></tbody></table></div></div></div></section>
+<section id="about"><div class="container"><div class="section-title"><h2>ስለ ገደብ ዘመናዊ ከተማ</h2></div><div class="panel"><p style="line-height:1.9;margin:0">የገደብ ዘመናዊ ከተማ የገደብ ወረዳ ነዋሪዎችን፣ የአካባቢ ተቋማትንና የሕዝብ አገልግሎቶችን በዲጂታል ቴክኖሎጂ ለማገናኘት የታሰበ የማኅበረሰብ ፈጠራ ፕሮጀክት ነው። ዓላማው መረጃን በቀላሉ ማድረስ፣ የሕዝብ ተሳትፎን ማበረታታትና የአገልግሎት ግልጽነትን ማሳደግ ነው።</p></div></div></section>
 </main>
-
-<footer>
-<div class="container">
-<div class="footer-grid">
-<div>
-<h3>የገደብ ዘመናዊ ከተማ</h3>
-<p>ቴክኖሎጂን ለማኅበረሰብ እድገት። የገደብ ወረዳ ዲጂታል ለውጥ ራዕይ።</p>
-</div>
-<div>
-<h3>የፕሮጀክት መረጃ</h3>
-<p>ገደብ ወረዳ፣ ኢትዮጵያ</p>
-<p>የፕሮጀክቱ አነሳሽ፦ ወንጌላዊ ለገሴ ጩምቡሮ</p>
-</div>
-</div>
-<div class="copyright">
-© <span id="year"></span> የገደብ ዘመናዊ ከተማ።
-መብቱ በሕግ የተጠበቀ ነው።
-<br>ይህ ሙከራዊ ፕሮጀክት ነው፤ ኦፊሴላዊ የመንግሥት ድረገጽ አይደለም።
-</div>
-</div>
-</footer>
-
+<footer><div class="container"><div class="footer-grid"><div><h3>የገደብ ዘመናዊ ከተማ</h3><p>ቴክኖሎጂን ለማኅበረሰብ እድገት። የገደብ ወረዳ ዲጂታል ለውጥ ራዕይ።</p></div><div><h3>የፕሮጀክት መረጃ</h3><p>ገደብ ወረዳ፣ ኢትዮጵያ</p><p>የፕሮጀክቱ አነሳሽ፦ ወንጌላዊ ለገሴ ጩምቡሮ</p></div></div><div class="copyright">© <span id="year"></span> የገደብ ዘመናዊ ከተማ። መብቱ በሕግ የተጠበቀ ነው።<br>ይህ ሙከራዊ ፕሮጀክት ነው፤ ኦፊሴላዊ የመንግሥት ድረገጽ አይደለም።</div></div></footer>
 <script>
-/* በሁለቱም ቦታዎች የሚታዩት ትክክለኛ 11 ቀበሌዎች */
-const kebeles = [
-"ገደብ ባረዳ",
-"ገደብ ሴሶሌ",
-"ገደብ ጉብታ",
-"ባደሳ",
-"ገልቻ",
-"ባንቆ ጨልጨለ",
-"ባንቆ ጎትት",
-"ባንቆ ጣጣቱ",
-"ሀሎ ባርቲ",
-"ወርቃ ጨልበሳ",
-"ወርቃ ሣካሮ"
+"use strict";
+const STORAGE_KEY="gedebComplaintsV2";
+const kebeles=["ገደብ ባረዳ","ገደብ ሴሶሌ","ጋልቻ","ባደሳ","ገደብ ጉብታ","ሐሎ ባርት","ወርቃ ሳካሮ","ወርቃ ጨልበሳ","ባንቆ ጣጣቱ","ባንቆ ጨልጨለ","ባንቆ ጎቲት"];
+const servicesData=[
+{icon:"📢",title:"የሕዝብ ቅሬታ ማቅረቢያ",desc:"የሕዝብ ቅሬታና የችግር ሪፖርት ማቅረቢያ።",features:["የሕዝብ ቅሬታ ማቅረብ።","በቀበሌ ውስጥ ያሉ ችግሮችን ሪፖርት ማድረግ።","የቅሬታ መለያ ቁጥር ማግኘት።","የቅሬታውን ሁኔታ መከታተል።"]},
+{icon:"ℹ️",title:"የመረጃ ማግኛ አገልግሎት",desc:"የወረዳ መረጃና ማስታወቂያዎች።",features:["የወረዳውን አጠቃላይ መረጃ ማግኘት።","የሕዝብ ማስታወቂያዎችን ማየት።","አስፈላጊ የማኅበረሰብ መረጃዎችን ማግኘት።"]},
+{icon:"🏘️",title:"የቀበሌ አገልግሎት",desc:"የቀበሌዎች መረጃና የአካባቢ አገልግሎቶች።",features:["ስለ 11ቱ ቀበሌዎች መረጃ ማግኘት።","የአካባቢ አገልግሎቶችን ማወቅ።","የቀበሌ አድራሻና የመገኛ መረጃ ማግኘት።"]},
+{icon:"🏥",title:"የጤና እና ሕክምና አገልግሎት",desc:"የጤና ተቋማትና የጤና ትምህርት መረጃ።",features:["ስለ ጤና ጣቢያዎችና ጤና ተቋማት መረጃ ማግኘት።","የጤና ትምህርት መረጃ ማየት።","የእናቶችና የሕፃናት ጤና መረጃ ማግኘት።"]},
+{icon:"🎓",title:"የትምህርት አገልግሎት",desc:"የትምህርት ቤቶችና የትምህርት ዕድሎች መረጃ።",features:["ስለ ትምህርት ቤቶች መረጃ ማግኘት።","የትምህርት ዕድሎችን ማወቅ።","የትምህርት ማስታወቂያዎችን ማየት።"]},
+{icon:"🌱",title:"የግብርና አገልግሎት",desc:"የግብርና ምክርና የገበሬዎች መረጃ።",features:["የግብርና ምክር ማግኘት።","ለገበሬዎች የሚጠቅሙ መረጃዎችን ማየት።","ስለ ሰብልና እንስሳት እርባታ መረጃ ማግኘት።"]},
+{icon:"🏪",title:"የንግድ እና ገበያ አገልግሎት",desc:"የአካባቢ ንግድ ተቋማትና የገበያ መረጃ።",features:["የአካባቢ ንግድ ተቋማትን ማወቅ።","ስለ ሱቆችና አገልግሎት ሰጪዎች መረጃ ማግኘት።","የአካባቢ ገበያ መረጃ ማየት።"]},
+{icon:"💼",title:"የሥራ ዕድል ማስታወቂያ",desc:"የሥራ ማስታወቂያና የሥራ ፈላጊዎች መረጃ።",features:["የሥራ ማስታወቂያዎችን ማየት።","የሥራ ዕድሎችን ማግኘት።","የሙያ ሥልጠናና ክህሎት ዕድሎችን ማወቅ።"]},
+{icon:"💧",title:"የንጹህ ውሃ አገልግሎት",desc:"የውሃ አቅርቦትና የውሃ ችግር ሪፖርት።",features:["ስለ ውሃ አገልግሎቶች መረጃ ማግኘት።","የውሃ አቅርቦት ችግር ሪፖርት ማድረግ።","ስለ ውሃ መገኛ ቦታዎች መረጃ ማየት።"]},
+{icon:"🛣️",title:"የመንገድ እና ትራንስፖርት አገልግሎት",desc:"የመንገድ መረጃና የመንገድ ችግር ሪፖርት።",features:["የመንገድ መረጃ ማግኘት።","የተበላሸ መንገድ ሪፖርት ማድረግ።","ስለ መንገድ ጥገና መረጃ ማየት።"]},
+{icon:"🤝",title:"የማኅበረሰብ ተሳትፎ",desc:"የማኅበረሰብ ተሳትፎና የጋራ ሥራዎች።",features:["በማኅበረሰብ ሥራዎች መሳተፍ።","የማኅበረሰብ ልማት እንቅስቃሴዎችን ማወቅ።","በበጎ ፈቃድ ሥራዎች መሳተፍ።"]},
+{icon:"📊",title:"የወረዳ አስተዳደር አገልግሎት",desc:"የአስተዳደር ክትትልና የአገልግሎት ማስተባበር።",features:["የአስተዳደር መረጃዎችን ማግኘት።","የሕዝብ አገልግሎቶችን ማስተባበር።","የልማት እንቅስቃሴዎችን መከታተል።"]}
 ];
-
-const servicesData = [
-{
-icon:"📢",title:"የሕዝብ ቅሬታ ማቅረቢያ",desc:"የሕዝብ ቅሬታና የችግር ሪፖርት ማቅረቢያ።",
-features:["የሕዝብ ቅሬታ ማቅረብ።","በቀበሌ ውስጥ ያሉ ችግሮችን ሪፖርት ማድረግ።","የቅሬታ መለያ ቁጥር ማግኘት።","የቅሬታውን ሁኔታ መከታተል።"]
-},
-{
-icon:"ℹ️",title:"የመረጃ ማግኛ አገልግሎት",desc:"የወረዳ መረጃና ማስታወቂያዎች።",
-features:["የወረዳውን አጠቃላይ መረጃ ማግኘት።","የመንግሥትና የሕዝብ ማስታወቂያዎችን ማየት።","አስፈላጊ የማኅበረሰብ መረጃዎችን ማግኘት።","ስለ ሕዝብ አገልግሎቶች መረጃ ማግኘት።"]
-},
-{
-icon:"🏘️",title:"የቀበሌ አገልግሎት",desc:"የቀበሌዎች መረጃና የአካባቢ አገልግሎቶች።",
-features:["ስለ 11ቱ ቀበሌዎች መረጃ ማግኘት።","የአካባቢ አገልግሎቶችን ማወቅ።","የቀበሌ አድራሻና የመገኛ መረጃ ማግኘት።","የአካባቢ ልማት መረጃዎችን ማየት።"]
-},
-{
-icon:"🏥",title:"የጤና እና ሕክምና አገልግሎት",desc:"የጤና ተቋማትና የጤና ትምህርት መረጃ።",
-features:["ስለ ጤና ጣቢያዎችና ጤና ተቋማት መረጃ ማግኘት።","የጤና ትምህርት መረጃ ማየት።","የእናቶችና የሕፃናት ጤና መረጃ ማግኘት።","የሕዝብ ጤና ማስታወቂያዎችን ማየት።"]
-},
-{
-icon:"🎓",title:"የትምህርት አገልግሎት",desc:"የትምህርት ቤቶችና የትምህርት ዕድሎች መረጃ።",
-features:["ስለ ትምህርት ቤቶች መረጃ ማግኘት።","የትምህርት ዕድሎችን ማወቅ።","የተማሪዎች ድጋፍ መረጃ ማግኘት።","የትምህርት ማስታወቂያዎችን ማየት።"]
-},
-{
-icon:"🌱",title:"የግብርና አገልግሎት",desc:"የግብርና ምክርና የገበሬዎች መረጃ።",
-features:["የግብርና ምክር ማግኘት።","ለገበሬዎች የሚጠቅሙ መረጃዎችን ማየት።","ስለ ሰብልና እንስሳት እርባታ መረጃ ማግኘት።","የግብርና ማስታወቂያዎችን ማየት።"]
-},
-{
-icon:"🏪",title:"የንግድ እና ገበያ አገልግሎት",desc:"የአካባቢ ንግድ ተቋማትና የገበያ መረጃ።",
-features:["የአካባቢ ንግድ ተቋማትን ማወቅ።","ስለ ሱቆችና አገልግሎት ሰጪዎች መረጃ ማግኘት።","የአካባቢ ገበያ መረጃ ማየት።","የንግድ ማስታወቂያዎችን ማየት።"]
-},
-{
-icon:"💼",title:"የሥራ ዕድል ማስታወቂያ",desc:"የሥራ ማስታወቂያና የሥራ ፈላጊዎች መረጃ።",
-features:["የሥራ ማስታወቂያዎችን ማየት።","የሥራ ዕድሎችን ማግኘት።","ለሥራ ፈላጊዎች መረጃ ማቅረብ።","የሙያ ሥልጠናና ክህሎት ዕድሎችን ማወቅ።"]
-},
-{
-icon:"💧",title:"የንጹህ ውሃ አገልግሎት",desc:"የውሃ አቅርቦትና የውሃ ችግር ሪፖርት።",
-features:["ስለ ውሃ አገልግሎቶች መረጃ ማግኘት።","የውሃ አቅርቦት ችግር ሪፖርት ማድረግ።","ስለ ውሃ መገኛ ቦታዎች መረጃ ማየት።","የውሃ አገልግሎት ማስታወቂያዎችን ማየት።"]
-},
-{
-icon:"🛣️",title:"የመንገድ እና ትራንስፖርት አገልግሎት",desc:"የመንገድ መረጃና የመንገድ ችግር ሪፖርት።",
-features:["የመንገድ መረጃ ማግኘት።","የተበላሸ መንገድ ሪፖርት ማድረግ።","ስለ መንገድ ጥገና መረጃ ማየት።","የአካባቢ ትራንስፖርት መረጃ ማግኘት።"]
-},
-{
-icon:"🤝",title:"የማኅበረሰብ ተሳትፎ",desc:"የማኅበረሰብ ተሳትፎና የጋራ ሥራዎች።",
-features:["በማኅበረሰብ ሥራዎች መሳተፍ።","የማኅበረሰብ ልማት እንቅስቃሴዎችን ማወቅ።","በበጎ ፈቃድ ሥራዎች መሳተፍ።","የሕዝብ ተሳትፎ ማስታወቂያዎችን ማየት።"]
-},
-{
-icon:"📊",title:"የወረዳ አስተዳደር አገልግሎት",desc:"የአስተዳደር ክትትልና የአገልግሎት ማስተባበር።",
-features:["የአስተዳደር መረጃዎችን ማግኘት።","የሕዝብ አገልግሎቶችን ማስተባበር።","የልማት እንቅስቃሴዎችን መከታተል።","የአስተዳደር ማስታወቂያዎችን ማየት።"]
-}
-];
-
-const modal=document.getElementById("serviceModal");
-
-function renderKebeles(){
-const grid=document.getElementById("kebeleGrid");
-const select=document.getElementById("kebele");
-grid.innerHTML="";
-select.innerHTML="";
-
-const first=document.createElement("option");
-first.value="";
-first.textContent="-- ቀበሌ ይምረጡ --";
-first.disabled=true;
-first.selected=true;
-select.appendChild(first);
-
-kebeles.forEach((name,index)=>{
-const div=document.createElement("div");
-div.className="kebele";
-
-const number=document.createElement("span");
-number.textContent=String(index+1).padStart(2,"0");
-
-div.append(number,document.createTextNode(" "+name));
-grid.appendChild(div);
-
-const option=document.createElement("option");
-option.value=name;
-option.textContent=name;
-select.appendChild(option);
-});
-}
-
-function renderServices(){
-const grid=document.getElementById("serviceGrid");
-grid.innerHTML="";
-
-servicesData.forEach((service,index)=>{
-const card=document.createElement("button");
-card.type="button";
-card.className="service";
-
-const icon=document.createElement("div");
-icon.className="emoji";
-icon.textContent=service.icon;
-
-const title=document.createElement("h3");
-title.textContent=service.title;
-
-const desc=document.createElement("p");
-desc.textContent=service.desc;
-
-const open=document.createElement("small");
-open.textContent="ዝርዝሩን ይመልከቱ ←";
-
-card.append(icon,title,desc,open);
-card.addEventListener("click",()=>openService(index));
-grid.appendChild(card);
-});
-}
-
-function openService(index){
-const item=servicesData[index];
-if(!item)return;
-
-document.getElementById("modalIcon").textContent=item.icon;
-document.getElementById("modalTitle").textContent=item.title;
-document.getElementById("modalDescription").textContent=item.desc;
-
-const list=document.getElementById("modalFeatures");
-list.innerHTML="";
-
-item.features.forEach(feature=>{
-const li=document.createElement("li");
-li.textContent=feature;
-list.appendChild(li);
-});
-
-document.getElementById("modalComplaint").style.display=index===0?"inline-block":"none";
-modal.classList.add("show");
-document.body.style.overflow="hidden";
-document.getElementById("closeModal").focus();
-}
-
-function closeService(){
-modal.classList.remove("show");
-document.body.style.overflow="";
-}
-
-document.getElementById("closeModal").addEventListener("click",closeService);
-document.getElementById("modalBack").addEventListener("click",closeService);
-
-modal.addEventListener("click",event=>{
-if(event.target===modal)closeService();
-});
-
-document.addEventListener("keydown",event=>{
-if(event.key==="Escape"&&modal.classList.contains("show"))closeService();
-});
-
-document.getElementById("modalComplaint").addEventListener("click",closeService);
-
-document.getElementById("complaintForm").addEventListener("submit",function(event){
-event.preventDefault();
-
-const kebele=document.getElementById("kebele").value;
-const category=document.getElementById("category").value;
-const description=document.getElementById("description").value.trim();
-
-if(!kebele||!category||!description){
-alert("እባክዎ ሁሉንም ቦታዎች ይሙሉ።");
-return;
-}
-
-const complaint={
-id:"GSC-"+Date.now(),
-kebele,
-category,
-description,
-date:new Date().toLocaleString("am-ET")
-};
-
-try{
-const saved=JSON.parse(localStorage.getItem("gedebComplaints")||"[]");
-saved.push(complaint);
-localStorage.setItem("gedebComplaints",JSON.stringify(saved));
-
-document.getElementById("formMessage").textContent=
-"ቅሬታዎ በዚህ ስልክ ላይ ተመዝግቧል። መለያ ቁጥር፦ "+complaint.id;
-
-this.reset();
-}catch(error){
-document.getElementById("formMessage").textContent=
-"መረጃውን ማስቀመጥ አልተቻለም።";
-}
-});
-
-document.getElementById("year").textContent=new Date().getFullYear();
-
-renderKebeles();
-renderServices();
+const $=id=>document.getElementById(id);
+function readComplaints(){try{const x=JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");return Array.isArray(x)?x:[]}catch(e){return[]}}
+function saveComplaints(rows){localStorage.setItem(STORAGE_KEY,JSON.stringify(rows))}
+function renderKebeles(){const grid=$("kebeleGrid"),select=$("kebele");grid.replaceChildren();select.replaceChildren();const first=document.createElement("option");first.value="";first.textContent="-- ቀበሌ ይምረጡ --";first.disabled=true;first.selected=true;select.append(first);kebeles.forEach((name,i)=>{const d=document.createElement("div");d.className="kebele";const n=document.createElement("span");n.textContent=String(i+1).padStart(2,"0");d.append(n,document.createTextNode(" "+name));grid.append(d);const o=document.createElement("option");o.value=name;o.textContent=name;select.append(o)})}
+function renderServices(filter=""){const grid=$("serviceGrid");grid.replaceChildren();let count=0;servicesData.forEach((s,i)=>{if(!(`${s.title} ${s.desc}`.includes(filter)))return;count++;const b=document.createElement("button");b.type="button";b.className="service";const ic=document.createElement("div");ic.className="emoji";ic.textContent=s.icon;const h=document.createElement("h3");h.textContent=s.title;const p=document.createElement("p");p.textContent=s.desc;const sm=document.createElement("small");sm.textContent="ዝርዝሩን ይመልከቱ ←";b.append(ic,h,p,sm);b.addEventListener("click",()=>openService(i));grid.append(b)});if(!count){const e=document.createElement("div");e.className="empty";e.textContent="የፈለጉት አገልግሎት አልተገኘም።";grid.append(e)}}
+const modal=$("serviceModal");
+function openService(i){const s=servicesData[i];$("modalIcon").textContent=s.icon;$("modalTitle").textContent=s.title;$("modalDescription").textContent=s.desc;const ul=$("modalFeatures");ul.replaceChildren();s.features.forEach(t=>{const li=document.createElement("li");li.textContent=t;ul.append(li)});$("modalComplaint").style.display=i===0?"inline-flex":"none";modal.classList.add("show");document.body.style.overflow="hidden";$("closeModal").focus()}
+function closeService(){modal.classList.remove("show");document.body.style.overflow=""}
+$("closeModal").addEventListener("click",closeService);$("modalBack").addEventListener("click",closeService);modal.addEventListener("click",e=>{if(e.target===modal)closeService()});document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("show"))closeService()});$("modalComplaint").addEventListener("click",closeService);
+$("serviceSearch").addEventListener("input",e=>renderServices(e.target.value.trim()));
+$("description").addEventListener("input",e=>$("charCount").textContent=e.target.value.length+"/1000");
+function makeId(){return "GSC-"+new Date().toISOString().slice(0,10).replaceAll("-","")+"-"+Math.random().toString(36).slice(2,7).toUpperCase()}
+$("complaintForm").addEventListener("submit",function(e){e.preventDefault();const kebele=$("kebele").value,category=$("category").value,description=$("description").value.trim();if(!kebele||!category||!description||!$("consent").checked){$("formMessage").innerHTML='<div class="error">እባክዎ አስፈላጊ መረጃዎችን ይሙሉ።</div>';return}const complaint={id:makeId(),kebele,category,description,reporter:$("reporter").value.trim(),contact:$("contact").value.trim(),date:new Date().toISOString(),status:"አዲስ"};try{const rows=readComplaints();rows.push(complaint);saveComplaints(rows);$("formMessage").innerHTML="";const box=document.createElement("div");box.className="success";const b=document.createElement("b");b.textContent="ቅሬታዎ በዚህ መሣሪያ ላይ ተመዝግቧል።";const br=document.createElement("br");const span=document.createElement("span");span.textContent="የመከታተያ ቁጥር፦ "+complaint.id;const copy=document.createElement("button");copy.type="button";copy.className="btn btn-outline";copy.style.marginLeft="8px";copy.textContent="ቁጥሩን ቅዳ";copy.addEventListener("click",()=>navigator.clipboard?.writeText(complaint.id).then(()=>copy.textContent="ተቀድቷል"));box.append(b,br,span,copy);$("formMessage").replaceChildren(box);this.reset();$("charCount").textContent="0/1000";renderAdmin()}catch(err){$("formMessage").textContent="መረጃውን ማስቀመጥ አልተቻለም። የስልኩን የማስቀመጫ ቦታ ያረጋግጡ።"}});
+function statusClass(s){return s==="ተጠናቋል"?"status-done":s==="በሂደት ላይ"?"status-progress":"status-new"}
+function showTrack(){const id=$("trackId").value.trim().toUpperCase();const found=readComplaints().find(x=>x.id.toUpperCase()===id);const out=$("trackResult");out.replaceChildren();const d=document.createElement("div");d.className="result-card";if(!id){d.textContent="እባክዎ የመለያ ቁጥር ያስገቡ።"}else if(!found){d.textContent="ይህ ቁጥር በዚህ መሣሪያ ላይ አልተገኘም። ቅሬታው በሌላ ስልክ ላይ ከተመዘገበ እዚህ አይታይም።"}else{const title=document.createElement("b");title.textContent="የቅሬታ መረጃ";const p=document.createElement("p");p.textContent="ቀበሌ፦ "+found.kebele+" | ዓይነት፦ "+found.category;const desc=document.createElement("p");desc.textContent="መግለጫ፦ "+found.description;const st=document.createElement("span");st.className="pill "+statusClass(found.status);st.textContent="ሁኔታ፦ "+found.status;d.append(title,p,desc,st)}out.append(d)}
+$("trackBtn").addEventListener("click",showTrack);$("trackId").addEventListener("keydown",e=>{if(e.key==="Enter")showTrack()});
+function renderAdmin(){const rows=readComplaints();$("adminSummary").textContent="ጠቅላላ ቅሬታዎች፦ "+rows.length+" | አዲስ፦ "+rows.filter(x=>x.status==="አዲስ").length+" | በሂደት ላይ፦ "+rows.filter(x=>x.status==="በሂደት ላይ").length+" | የተጠናቀቁ፦ "+rows.filter(x=>x.status==="ተጠናቋል").length;const body=$("adminRows");body.replaceChildren();rows.slice().reverse().forEach(item=>{const tr=document.createElement("tr");[item.id,new Date(item.date).toLocaleString("am-ET"),item.kebele,item.category,item.description].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.append(td)});const td=document.createElement("td"),sel=document.createElement("select");["አዲስ","በሂደት ላይ","ተጠናቋል"].forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;sel.append(o)});sel.value=item.status||"አዲስ";sel.addEventListener("change",()=>{const all=readComplaints(),ix=all.findIndex(x=>x.id===item.id);if(ix>=0){all[ix].status=sel.value;saveComplaints(all);renderAdmin()}});td.append(sel);tr.append(td);body.append(tr)});if(!rows.length){const tr=document.createElement("tr"),td=document.createElement("td");td.colSpan=6;td.textContent="ገና የተመዘገበ ቅሬታ የለም።";tr.append(td);body.append(tr)}}
+$("refreshAdmin").addEventListener("click",renderAdmin);
+$("exportCsv").addEventListener("click",()=>{const rows=readComplaints();if(!rows.length){alert("ለማውረድ መረጃ የለም።");return}const cols=["id","date","kebele","category","description","status"];const csv=[cols.join(","),...rows.map(r=>cols.map(k=>'"'+String(r[k]??"").replaceAll('"','""')+'"').join(","))].join("\r\n");const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="gedeb-complaints-demo.csv";a.click();URL.revokeObjectURL(url)});
+$("clearDemo").addEventListener("click",()=>{if(confirm("በዚህ መሣሪያ የተቀመጡ ሁሉም የሙከራ ቅሬታዎች ይሰረዛሉ። እርግጠኛ ነዎት?")){localStorage.removeItem(STORAGE_KEY);renderAdmin();$("trackResult").replaceChildren()}});
+function updateConnection(){const el=$("connectionState");if(navigator.onLine){el.textContent="● ኢንተርኔት አለ";el.style.background="#e9f5f1";el.style.color="var(--g)"}else{el.textContent="● ከመስመር ውጭ";el.style.background="#fff5dc";el.style.color="#805b00"}}
+window.addEventListener("online",updateConnection);window.addEventListener("offline",updateConnection);
+$("year").textContent=new Date().getFullYear();renderKebeles();renderServices();renderAdmin();updateConnection();
+if("serviceWorker" in navigator && location.protocol!=="file:"){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}
 </script>
-</body>
-</html>
+</body></html>
