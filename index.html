@@ -3,17 +3,16 @@
 <html lang="am">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#075e54">
 <meta name="description" content="የገደብ ወረዳ ዲጂታል የሕዝብ አገልግሎት">
 <title>GEDEB DIGITAL CITY</title>
-
 <style>
 :root{
- --green:#075e54;--green2:#087c6d;--dark:#064b44;
- --gold:#f4c75e;--bg:#f2f6f5;--white:#fff;
- --ink:#19332e;--muted:#657873;--border:#dce7e3;
- --red:#b83227;
+--green:#075e54;--green2:#087c6d;--dark:#064b44;
+--gold:#f4c75e;--bg:#f2f6f5;--white:#fff;
+--ink:#19332e;--muted:#657873;--border:#dce7e3;
+--red:#b83227
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}
@@ -40,7 +39,7 @@ label{display:block;font-weight:bold;font-size:14px;margin:13px 0 6px}
 input,select,textarea{width:100%;padding:12px;border:1px solid #cbd9d5;border-radius:8px;font-size:15px;background:white;color:var(--ink)}
 textarea{min-height:110px;resize:vertical}
 button{cursor:pointer}
-.btn{border:0;border-radius:8px;padding:12px 16px;background:var(--green2);color:white;font-size:15px;margin-top:10px}
+.btn{border:0;border-radius:8px;padding:12px 16px;background:var(--green2);color:white;font-size:15px;margin:8px 5px 0 0}
 .btn:hover{opacity:.9}
 .btn.gray{background:#637772}
 .btn.red{background:var(--red)}
@@ -59,484 +58,607 @@ footer{background:var(--dark);color:white;text-align:center;padding:22px;line-he
 @media(min-width:650px){.formgrid{grid-template-columns:1fr 1fr}.wide{grid-column:1/-1}}
 </style>
 </head>
-
 <body>
+
 <header>
- <div class="logo">DGWT</div>
- <h1>ዲጂታል ገደብ ወረዳና ከተማ</h1>
- <p>አንድ ወረዳ፣ አንድ ዲጂታል ማዕከል፣ ሁሉም አገልግሎቶች</p>
+<div class="logo">DGWT</div>
+<h1>ዲጂታል ገደብ ወረዳና ከተማ</h1>
+<p>አንድ ወረዳ፣ አንድ ዲጂታል ማዕከል፣ ሁሉም አገልግሎቶች</p>
 </header>
 
 <nav>
- <a href="#homePage" onclick="showHome();return false">መነሻ</a>
- <a href="#services" onclick="showHome();return false">አገልግሎቶች</a>
- <a href="#track" onclick="showHome();return false">ጉዳዬን አይ</a>
- <a href="#about" onclick="showHome();return false">ስለ ስርዓቱ</a>
- <a href="#admin" onclick="showAdminLogin();return false">አስተዳዳሪ</a>
+<a href="#home" onclick="showHome();return false">መነሻ</a>
+<a href="#services" onclick="showHome();return false">አገልግሎቶች</a>
+<a href="#track" onclick="showHome();return false">ጉዳዬን አይ</a>
+<a href="#about" onclick="showHome();return false">ስለ ስርዓቱ</a>
+<a href="#admin" onclick="showAdminLogin();return false">አስተዳዳሪ</a>
 </nav>
 
 <section class="hero" id="hero">
- <h2>እንኳን ወደ ዲጂታል ገደብ በደህና መጡ!</h2>
- <p>የወረዳችንን አገልግሎቶች በአንድ ዲጂታል መድረክ ያግኙ። ጥያቄዎንና ቅሬታዎን ያቅርቡ፤ ምላሹንም ይከታተሉ።</p>
+<h2>እንኳን ወደ ዲጂታል ገደብ በደህና መጡ!</h2>
+<p>የወረዳችንን አገልግሎቶች በአንድ ዲጂታል መድረክ ያግኙ። ጥያቄዎንና ቅሬታዎን ያቅርቡ፤ ምላሹንም ይከታተሉ።</p>
 </section>
 
 <main class="container">
 
 <section id="homePage">
- <h2 class="section-title" id="services">12ቱ የዲጂታል አገልግሎቶች</h2>
- <p class="sub">የፈለጉትን አገልግሎት ይምረጡ።</p>
- <div class="grid" id="serviceGrid"></div>
+<h2 class="section-title" id="services">12ቱ የዲጂታል አገልግሎቶች</h2>
+<p class="sub">የፈለጉትን አገልግሎት ይምረጡ።</p>
+<div class="grid" id="serviceGrid"></div>
 
- <section class="card" id="track">
-  <h2 class="section-title">የጉዳዬን ሁኔታ አይ</h2>
-  <p class="sub">ያቀረቡትን ጉዳይና የአስተዳዳሪውን ምላሽ ይመልከቱ።</p>
-  <button class="btn" id="refreshMine">የእኔን ጉዳዮች አሳይ</button>
-  <div id="myTickets"></div>
- </section>
+<section class="card" id="track">
+<h2 class="section-title">የጉዳዬን ሁኔታ አይ</h2>
+<p class="sub">ያቀረቡትን ጉዳይና የአስተዳዳሪውን ምላሽ ይመልከቱ።</p>
+<div class="notice">ጉዳይዎን ባቀረቡበት ስልክና ብራውዘር ውስጥ ይህን ይጫኑ።</div>
+<button class="btn" id="refreshMine">የእኔን ጉዳዮች አሳይ</button>
+<div id="myTickets"></div>
+</section>
 
- <section class="card" id="about">
-  <h2 class="section-title">ስለ ዲጂታል ገደብ</h2>
-  <p style="line-height:2">ዲጂታል ገደብ ወረዳና ከተማ የወረዳውን አገልግሎቶች በዘመናዊ ቴክኖሎጂ ለማቀናጀት የተዘጋጀ የዲጂታል መድረክ ነው። ዓላማው የዜጎችን ተሳትፎ፣ ግልጽነትና ተጠያቂነት ማጠናከር ነው።</p>
- </section>
+<section class="card" id="about">
+<h2 class="section-title">ስለ ዲጂታል ገደብ</h2>
+<p style="line-height:2">ዲጂታል ገደብ ወረዳና ከተማ የወረዳውን አገልግሎቶች በዘመናዊ ቴክኖሎጂ ለማቀናጀት የተዘጋጀ የዲጂታል መድረክ ነው። ዓላማው የዜጎችን ተሳትፎ፣ ግልጽነትና ተጠያቂነት ማጠናከር ነው።</p>
+</section>
 </section>
 
 <section id="detailPage" class="hidden">
- <button class="btn gray" onclick="showHome()">← ወደ መነሻ ተመለስ</button>
- <div class="card">
-  <h2 id="detailTitle"></h2>
-  <p id="detailDesc" style="line-height:1.9"></p>
-  <h3>የጥያቄና ቅሬታ ማቅረቢያ</h3>
-  <div class="notice">እባክዎ ጉዳይዎን በግልጽ ይግለጹ። የሚያስገቡት መረጃ በዳታቤዝ ይቀመጣል።</div>
-  <form id="serviceForm">
-   <div class="formgrid">
-    <div>
-     <label for="kebele">የቀበሌ ስም</label>
-     <select id="kebele" required><option value="">ቀበሌ ይምረጡ</option></select>
-    </div>
-    <div>
-     <label for="issueType">የጉዳዩ ዓይነት</label>
-     <select id="issueType" required>
-      <option value="">ይምረጡ</option>
-      <option>ጥያቄ</option><option>ቅሬታ</option>
-      <option>ጥቆማ</option><option>የአገልግሎት ጥያቄ</option>
-     </select>
-    </div>
-    <div>
-     <label for="citizenName">ሙሉ ስም (አማራጭ)</label>
-     <input id="citizenName" maxlength="100">
-    </div>
-    <div>
-     <label for="phone">ስልክ ቁጥር (አማራጭ)</label>
-     <input id="phone" type="tel" maxlength="25">
-    </div>
-    <div class="wide">
-     <label for="description">የጉዳዩ መግለጫ</label>
-     <textarea id="description" required minlength="8" maxlength="3000" placeholder="ጉዳይዎን በዝርዝር ይግለጹ..."></textarea>
-    </div>
-   </div>
-   <button class="btn" id="sendBtn" type="submit" style="width:100%">ቅጹን አስገባ</button>
-  </form>
-  <div id="formMessage"></div>
- </div>
+<button class="btn gray" onclick="showHome()">← ወደ መነሻ ተመለስ</button>
+<div class="card">
+<h2 id="detailTitle"></h2>
+<p id="detailDesc" style="line-height:1.9"></p>
+<h3>የጥያቄና ቅሬታ ማቅረቢያ</h3>
+<div class="notice">እባክዎ ጉዳይዎን በግልጽ ይግለጹ። መረጃዎ በዳታቤዝ ይቀመጣል።</div>
+<form id="serviceForm">
+<div class="formgrid">
+<div>
+<label for="kebele">የቀበሌ ስም</label>
+<select id="kebele" required><option value="">ቀበሌ ይምረጡ</option></select>
+</div>
+<div>
+<label for="issueType">የጉዳዩ ዓይነት</label>
+<select id="issueType" required>
+<option value="">ይምረጡ</option>
+<option>ጥያቄ</option><option>ቅሬታ</option>
+<option>ጥቆማ</option><option>የአገልግሎት ጥያቄ</option>
+</select>
+</div>
+<div>
+<label for="citizenName">ሙሉ ስም (አማራጭ)</label>
+<input id="citizenName" maxlength="100">
+</div>
+<div>
+<label for="phone">ስልክ ቁጥር (አማራጭ)</label>
+<input id="phone" type="tel" maxlength="25">
+</div>
+<div class="wide">
+<label for="description">የጉዳዩ መግለጫ</label>
+<textarea id="description" required minlength="8" maxlength="3000" placeholder="ጉዳይዎን በዝርዝር ይግለጹ..."></textarea>
+</div>
+</div>
+<button class="btn" id="sendBtn" type="submit" style="width:100%">ቅጹን አስገባ</button>
+</form>
+<div id="formMessage"></div>
+</div>
 </section>
 
 <section id="adminLoginPage" class="hidden">
- <button class="btn gray" onclick="showHome()">← መነሻ</button>
- <div class="card">
-  <h2 class="section-title">የአስተዳዳሪ መግቢያ</h2>
-  <div class="notice">ይህ ገጽ ለተፈቀደላቸው አስተዳዳሪዎች ብቻ ነው።</div>
-  <label for="adminEmail">ኢሜይል</label>
-  <input id="adminEmail" type="email" autocomplete="username">
-  <label for="adminPassword">የይለፍ ቃል</label>
-  <input id="adminPassword" type="password" autocomplete="current-password">
-  <button class="btn" id="loginBtn" style="width:100%">ግባ</button>
-  <div id="loginMessage"></div>
- </div>
+<button class="btn gray" onclick="showHome()">← መነሻ</button>
+<div class="card">
+<h2 class="section-title">የአስተዳዳሪ መግቢያ</h2>
+<div class="notice">ይህ ገጽ ለተፈቀደላቸው አስተዳዳሪዎች ብቻ ነው።</div>
+<label for="adminEmail">ኢሜይል</label>
+<input id="adminEmail" type="email" autocomplete="username">
+<label for="adminPassword">የይለፍ ቃል</label>
+<input id="adminPassword" type="password" autocomplete="current-password">
+<button class="btn" id="loginBtn" style="width:100%">ግባ</button>
+<div id="loginMessage"></div>
+</div>
 </section>
 
 <section id="adminDashboard" class="hidden">
- <div class="card">
-  <h2 class="section-title">የአስተዳዳሪ መቆጣጠሪያ</h2>
-  <div class="stats">
-   <div class="stat"><span>ጠቅላላ ጉዳዮች</span><br><strong id="totalCount">0</strong></div>
-   <div class="stat"><span>ክፍት ጉዳዮች</span><br><strong id="openCount">0</strong></div>
-   <div class="stat"><span>የተጠናቀቁ</span><br><strong id="closedCount">0</strong></div>
-  </div>
-  <button class="btn" id="reloadAdmin">መረጃ አድስ</button>
-  <button class="btn red" id="logoutBtn">ውጣ</button>
- </div>
- <div class="card">
-  <h3>ጉዳዮችን በማጣሪያ ፈልግ</h3>
-  <label for="filterKebele">በቀበሌ</label>
-  <select id="filterKebele"><option value="">ሁሉም ቀበሌዎች</option></select>
-  <label for="filterService">በአገልግሎት</label>
-  <select id="filterService"><option value="">ሁሉም አገልግሎቶች</option></select>
-  <label for="filterStatus">በሁኔታ</label>
-  <select id="filterStatus">
-   <option value="">ሁሉም</option><option>አዲስ</option>
-   <option>በሂደት</option><option>ተጠናቋል</option>
-  </select>
-  <button class="btn" id="filterBtn">ፈልግ</button>
- </div>
- <div id="adminRequests"></div>
+<div class="card">
+<h2 class="section-title">የአስተዳዳሪ መቆጣጠሪያ</h2>
+<div class="stats">
+<div class="stat"><span>ጠቅላላ ጉዳዮች</span><br><strong id="totalCount">0</strong></div>
+<div class="stat"><span>ክፍት ጉዳዮች</span><br><strong id="openCount">0</strong></div>
+<div class="stat"><span>የተጠናቀቁ</span><br><strong id="closedCount">0</strong></div>
+</div>
+<button class="btn" id="reloadAdmin">መረጃ አድስ</button>
+<button class="btn red" id="logoutBtn">ውጣ</button>
+</div>
+<div class="card">
+<h3>ጉዳዮችን በማጣሪያ ፈልግ</h3>
+<label for="filterKebele">በቀበሌ</label>
+<select id="filterKebele"><option value="">ሁሉም ቀበሌዎች</option></select>
+<label for="filterService">በአገልግሎት</label>
+<select id="filterService"><option value="">ሁሉም አገልግሎቶች</option></select>
+<label for="filterStatus">በሁኔታ</label>
+<select id="filterStatus">
+<option value="">ሁሉም</option><option>አዲስ</option>
+<option>በሂደት</option><option>ተጠናቋል</option>
+</select>
+<button class="btn" id="filterBtn">ፈልግ</button>
+</div>
+<div id="adminRequests"></div>
 </section>
-
 </main>
 
 <footer>
- <strong>DGWT</strong><br>
- ዲጂታል ገደብ ወረዳና ከተማ<br>
- አንድ ወረዳ፣ አንድ ዲጂታል ማዕከል፣ ሁሉም አገልግሎቶች
+<strong>DGWT</strong><br>
+ዲጂታል ገደብ ወረዳና ከተማ<br>
+አንድ ወረዳ፣ አንድ ዲጂታል ማዕከል፣ ሁሉም አገልግሎቶች
 </footer>
 
-<!-- ይህ ክፍል Firebase ባይገናኝም አገልግሎቶቹን እንዲያሳይ ያደርጋል -->
 <script>
 const services=[
- ["🏥","ጤና አገልግሎት","የጤና ተቋማት፣ መድኃኒት፣ የሕክምና አገልግሎትና ቅሬታዎች።"],
- ["📚","ትምህርት","የትምህርት ቤቶች፣ የተማሪዎች፣ የመምህራንና የትምህርት ጥራት ጉዳዮች።"],
- ["🚔","ደህንነት","የሕዝብ ደህንነት፣ የወንጀል ጥቆማና የሰላም ጉዳዮች።"],
- ["🏛️","የመንግሥት አገልግሎት","የአስተዳደር አገልግሎት፣ ቅሬታና ተጠያቂነት።"],
- ["🛒","ገበያና ዋጋ","የሸቀጦች ዋጋ፣ የገበያ ቁጥጥርና ቅሬታዎች።"],
- ["🌱","ግብርና","የግብርና ምርት፣ የግብዓት አቅርቦትና የአርሶ አደር ድጋፍ።"],
- ["💧","ውሃና ኤሌክትሪክ","የውሃ አቅርቦት፣ የኤሌክትሪክ መቋረጥና መሠረተ ልማት።"],
- ["🛣️","መንገድና ግንባታ","የመንገድ ጥገና፣ የድልድይና የግንባታ ችግሮች።"],
- ["🌳","አካባቢ ጥበቃ","የአካባቢ ንጽህና፣ ቆሻሻ አወጋገድና የደን ጥበቃ።"],
- ["🏠","መሬትና ቤት","የመሬት አስተዳደር፣ የቤት ግንባታና ቅሬታዎች።"],
- ["💼","ሥራና ኢኮኖሚ","የሥራ ዕድል፣ የሥራ ፈላጊዎችና የኢኮኖሚ ድጋፍ።"],
- ["🤝","ማኅበራዊ ድጋፍ","ለተጋላጭ ዜጎች፣ ለአረጋውያንና ለአካል ጉዳተኞች ድጋፍ።"]
+["🏥","ጤና አገልግሎት","የጤና ተቋማት፣ መድኃኒት፣ የሕክምና አገልግሎትና ቅሬታዎች።"],
+["📚","ትምህርት","የትምህርት ቤቶች፣ የተማሪዎች፣ የመምህራንና የትምህርት ጥራት ጉዳዮች።"],
+["🚔","ደህንነት","የሕዝብ ደህንነት፣ የወንጀል ጥቆማና የሰላም ጉዳዮች።"],
+["🏛️","የመንግሥት አገልግሎት","የአስተዳደር አገልግሎት፣ ቅሬታና ተጠያቂነት።"],
+["🛒","ገበያና ዋጋ","የሸቀጦች ዋጋ፣ የገበያ ቁጥጥርና ቅሬታዎች።"],
+["🌱","ግብርና","የግብርና ምርት፣ የግብዓት አቅርቦትና የአርሶ አደር ድጋፍ።"],
+["💧","ውሃና ኤሌክትሪክ","የውሃ አቅርቦት፣ የኤሌክትሪክ መቋረጥና መሠረተ ልማት።"],
+["🛣️","መንገድና ግንባታ","የመንገድ ጥገና፣ የድልድይና የግንባታ ችግሮች።"],
+["🌳","አካባቢ ጥበቃ","የአካባቢ ንጽህና፣ ቆሻሻ አወጋገድና የደን ጥበቃ።"],
+["🏠","መሬትና ቤት","የመሬት አስተዳደር፣ የቤት ግንባታና ቅሬታዎች።"],
+["💼","ሥራና ኢኮኖሚ","የሥራ ዕድል፣ የሥራ ፈላጊዎችና የኢኮኖሚ ድጋፍ።"],
+["🤝","ማኅበራዊ ድጋፍ","ለተጋላጭ ዜጎች፣ ለአረጋውያንና ለአካል ጉዳተኞች ድጋፍ።"]
 ];
+
 const kebeles=[
- "ገደብ ባረዳ","ገደብ ሴሶሌ","ጋልቻ","ባደሳ",
- "ገደብ ጉብታ","ሐሎ ባርት","ወርቃ ሳካሮ",
- "ወርቃ ጨልበሳ","ባንቆ ጣጣቱ","ባንቆ ጨልጨለ",
- "ባንቆ ጎቲት"
+"ገደብ ባረዳ","ገደብ ሴሶሌ","ጋልቻ","ባደሳ",
+"ገደብ ጉብታ","ሐሎ ባርት","ወርቃ ሳካሮ",
+"ወርቃ ጨልበሳ","ባንቆ ጣጣቱ","ባንቆ ጨልጨለ",
+"ባንቆ ጎቲት"
 ];
+
 const $=id=>document.getElementById(id);
 let selectedService=null;
 
 function fillSelect(id,items){
- const el=$(id);
- items.forEach(item=>{
-  const option=document.createElement("option");
-  option.value=item;option.textContent=item;el.appendChild(option);
- });
+const el=$(id);
+items.forEach(item=>{
+const option=document.createElement("option");
+option.value=item;
+option.textContent=item;
+el.appendChild(option);
+});
 }
 fillSelect("kebele",kebeles);
 fillSelect("filterKebele",kebeles);
 fillSelect("filterService",services.map(s=>s[1]));
 
 services.forEach((service,index)=>{
- const button=document.createElement("button");
- button.type="button";button.className="service";
- const icon=document.createElement("div");
- icon.className="ico";icon.textContent=service[0];
- const title=document.createElement("h3");
- title.textContent=service[1];
- const desc=document.createElement("p");
- desc.textContent="ለመግባት ይንኩ";
- button.append(icon,title,desc);
- button.addEventListener("click",()=>openService(index));
- $("serviceGrid").appendChild(button);
+const button=document.createElement("button");
+button.type="button";
+button.className="service";
+const icon=document.createElement("div");
+icon.className="ico";
+icon.textContent=service[0];
+const title=document.createElement("h3");
+title.textContent=service[1];
+const desc=document.createElement("p");
+desc.textContent="ለመግባት ይንኩ";
+button.append(icon,title,desc);
+button.addEventListener("click",()=>openService(index));
+$("serviceGrid").appendChild(button);
 });
 
 function hideAllPages(){
- ["homePage","detailPage","adminLoginPage","adminDashboard"]
- .forEach(id=>$(id).classList.add("hidden"));
- $("hero").classList.add("hidden");
+["homePage","detailPage","adminLoginPage","adminDashboard"]
+.forEach(id=>$(id).classList.add("hidden"));
+$("hero").classList.add("hidden");
 }
+
 window.showHome=function(){
- hideAllPages();
- $("homePage").classList.remove("hidden");
- $("hero").classList.remove("hidden");
- window.scrollTo(0,0);
+hideAllPages();
+$("homePage").classList.remove("hidden");
+$("hero").classList.remove("hidden");
+window.scrollTo(0,0);
 };
+
 function openService(index){
- selectedService=services[index];
- hideAllPages();
- $("detailPage").classList.remove("hidden");
- $("detailTitle").textContent=selectedService[0]+" "+selectedService[1];
- $("detailDesc").textContent=selectedService[2];
- $("serviceForm").reset();
- $("formMessage").textContent="";
- window.scrollTo(0,0);
+selectedService=services[index];
+hideAllPages();
+$("detailPage").classList.remove("hidden");
+$("detailTitle").textContent=selectedService[0]+" "+selectedService[1];
+$("detailDesc").textContent=selectedService[2];
+$("serviceForm").reset();
+$("formMessage").textContent="";
+window.scrollTo(0,0);
 }
+
 window.showAdminLogin=function(){
- hideAllPages();
- $("adminLoginPage").classList.remove("hidden");
- window.scrollTo(0,0);
+hideAllPages();
+$("adminLoginPage").classList.remove("hidden");
+window.scrollTo(0,0);
 };
 </script>
 
-<!-- Firebase እና ዳታቤዝ -->
 <script type="module">
 import {initializeApp}
- from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+
 import {
- getAuth,onAuthStateChanged,signInAnonymously,
- signInWithEmailAndPassword,signOut
+getAuth,onAuthStateChanged,signInAnonymously,
+signInWithEmailAndPassword,signOut
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
 import {
- getFirestore,collection,addDoc,getDocs,query,
- where,orderBy,doc,getDoc,updateDoc,serverTimestamp
+getFirestore,collection,addDoc,getDocs,query,
+where,doc,updateDoc,serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
-/* የFirebase ቅንብር - አንድ ጊዜ ብቻ */
 const firebaseConfig={
- apiKey:"AIzaSyBXqg1sD5Wsl1sO5N3GiXpCujrlnCjnGXU",
- authDomain:"gedeb-digital-city.firebaseapp.com",
- projectId:"gedeb-digital-city",
- storageBucket:"gedeb-digital-city.firebasestorage.app",
- messagingSenderId:"836252566289",
- appId:"1:836252566289:web:fd0acaa125fe62414042b0"
+apiKey:"AIzaSyBXqg1sD5Wsl1sO5N3GiXpCujrlnCjnGXU",
+authDomain:"gedeb-digital-city.firebaseapp.com",
+projectId:"gedeb-digital-city",
+storageBucket:"gedeb-digital-city.firebasestorage.app",
+messagingSenderId:"836252566289",
+appId:"1:836252566289:web:fd0acaa125fe62414042b0"
 };
 
 const $=id=>document.getElementById(id);
-let app,auth,db,currentUser=null,allRequests=[];
+
+let citizenApp,citizenAuth,citizenDb;
+let adminApp,adminAuth,adminDb;
+let currentCitizen=null;
+let allRequests=[];
+let citizenReady=null;
 
 function showMessage(element,message,success=false){
- element.className="status "+(success?"ok":"err");
- element.textContent=message;
+element.className="status "+(success?"ok":"err");
+element.textContent=message;
 }
+
 function trackingCode(){
- return "GD-"+Date.now().toString(36).toUpperCase()+"-"+
- Math.random().toString(36).slice(2,6).toUpperCase();
+return "GD-"+Date.now().toString(36).toUpperCase()+"-"+
+Math.random().toString(36).slice(2,6).toUpperCase();
 }
+
+/*
+  ዋና ማስተካከያ:
+  የዜጋው Firebase Auth እና የአስተዳዳሪው
+  Firebase Auth በተለያዩ Firebase App ይሰራሉ።
+  ይህ የዜጋውን Anonymous UID እንዳይቀይር ይከላከላል።
+*/
 
 try{
- app=initializeApp(firebaseConfig);
- auth=getAuth(app);
- db=getFirestore(app);
+citizenApp=initializeApp(firebaseConfig);
+citizenAuth=getAuth(citizenApp);
+citizenDb=getFirestore(citizenApp);
 
- onAuthStateChanged(auth,async user=>{
-  currentUser=user;
-  if(!user){
-   try{await signInAnonymously(auth);}
-   catch(error){console.error("Anonymous sign-in:",error);}
-  }
- });
+adminApp=initializeApp(firebaseConfig,"adminApp");
+adminAuth=getAuth(adminApp);
+adminDb=getFirestore(adminApp);
+
+/* የዜጋ Anonymous መግቢያ */
+citizenReady=new Promise((resolve)=>{
+onAuthStateChanged(citizenAuth,async user=>{
+if(user){
+currentCitizen=user;
+resolve(user);
+}else{
+currentCitizen=null;
+try{
+await signInAnonymously(citizenAuth);
 }catch(error){
- console.error("Firebase initialization:",error);
- showMessage($("formMessage"),"Firebase ጋር መገናኘት አልተቻለም። የFirebase ቅንብርን ያረጋግጡ።");
+console.error("Anonymous sign-in:",error);
+$("myTickets").textContent="የዜጋ መግቢያ አልተሳካም። "+error.message;
+}
+}
+});
+});
+
+}catch(error){
+console.error("Firebase initialization:",error);
+showMessage($("formMessage"),"Firebase ጋር መገናኘት አልተቻለም፦ "+error.message);
 }
 
 /* ዜጋ ጉዳይ ሲያቀርብ */
 $("serviceForm").addEventListener("submit",async event=>{
- event.preventDefault();
- if(!db){
-  showMessage($("formMessage"),"Firebase አልተገናኘም።");
-  return;
- }
- if(!currentUser){
-  showMessage($("formMessage"),"ስርዓቱ እስኪገናኝ ይጠብቁ።");
-  return;
- }
- const button=$("sendBtn");
- button.disabled=true;
- try{
-  const code=trackingCode();
-  await addDoc(collection(db,"requests"),{
-   ownerUid:currentUser.uid,
-   trackingCode:code,
-   kebele:$("kebele").value,
-   issueType:$("issueType").value,
-   service:selectedService[1],
-   citizenName:$("citizenName").value.trim(),
-   phone:$("phone").value.trim(),
-   description:$("description").value.trim(),
-   status:"አዲስ",
-   adminReply:"",
-   createdAt:serverTimestamp(),
-   updatedAt:serverTimestamp()
-  });
-  showMessage($("formMessage"),
-   "ጉዳይዎ በተሳካ ሁኔታ ተልኳል።\n"+
-   "የመከታተያ ቁጥርዎ፦ "+code+
-   "\nእባክዎ ቁጥሩን ያስቀምጡ።",true);
-  $("serviceForm").reset();
- }catch(error){
-  console.error(error);
-  showMessage($("formMessage"),"መላክ አልተቻለም፦ "+error.message);
- }finally{button.disabled=false;}
+event.preventDefault();
+
+if(!citizenDb){
+showMessage($("formMessage"),"Firebase አልተገናኘም።");
+return;
+}
+
+const button=$("sendBtn");
+button.disabled=true;
+
+try{
+if(!currentCitizen){
+await citizenReady;
+}
+if(!currentCitizen){
+throw new Error("የዜጋ መግቢያ አልተገናኘም።");
+}
+
+const code=trackingCode();
+
+await addDoc(collection(citizenDb,"requests"),{
+ownerUid:currentCitizen.uid,
+trackingCode:code,
+kebele:$("kebele").value,
+issueType:$("issueType").value,
+service:selectedService[1],
+citizenName:$("citizenName").value.trim(),
+phone:$("phone").value.trim(),
+description:$("description").value.trim(),
+status:"አዲስ",
+adminReply:"",
+createdAt:serverTimestamp(),
+updatedAt:serverTimestamp()
 });
 
-/* የዜጋ ጉዳይ መከታተያ */
-async function loadMyRequests(){
- const output=$("myTickets");
- output.textContent="";
- if(!db||!currentUser){
-  showMessage(output,"Firebase እስኪገናኝ ይጠብቁ።");
-  return;
- }
- try{
-  const q=query(collection(db,"requests"),
-   where("ownerUid","==",currentUser.uid));
-  const snapshot=await getDocs(q);
-  if(snapshot.empty){
-   output.textContent="እስካሁን ያቀረቡት ጉዳይ የለም።";
-   return;
-  }
-  snapshot.forEach(snap=>{
-   const data=snap.data();
-   const card=document.createElement("div");
-   card.className="ticket";
-   const title=document.createElement("h3");
-   title.textContent=(data.service||"")+" · "+(data.issueType||"");
-   const details=document.createElement("p");
-   details.textContent="ቀበሌ፦ "+(data.kebele||"");
-   const status=document.createElement("p");
-   status.textContent="ሁኔታ፦ "+(data.status||"አዲስ");
-   const code=document.createElement("p");
-   code.textContent="መከታተያ ቁጥር፦ "+(data.trackingCode||"");
-   const desc=document.createElement("p");
-   desc.textContent="ጉዳይ፦ "+(data.description||"");
-   const reply=document.createElement("p");
-   reply.textContent=data.adminReply?
-    "የአስተዳዳሪ ምላሽ፦ "+data.adminReply:
-    "የአስተዳዳሪ ምላሽ እየተጠበቀ ነው።";
-   card.append(title,details,status,code,desc,reply);
-   output.appendChild(card);
-  });
- }catch(error){
-  console.error(error);
-  showMessage(output,"ጉዳዮችን ማምጣት አልተቻለም፦ "+error.message);
- }
+showMessage($("formMessage"),
+"ጉዳይዎ በተሳካ ሁኔታ ተልኳል።\n"+
+"የመከታተያ ቁጥርዎ፦ "+code+
+"\nእባክዎ ቁጥሩን ያስቀምጡ።",true);
+
+$("serviceForm").reset();
+
+}catch(error){
+console.error(error);
+showMessage($("formMessage"),"መላክ አልተቻለም፦ "+error.message);
+}finally{
+button.disabled=false;
 }
+});
+
+/* የዜጋ ጉዳይና የአስተዳዳሪ ምላሽ ማሳያ */
+async function loadMyRequests(){
+const output=$("myTickets");
+output.textContent="ጉዳዮችዎ እየተፈለጉ ነው...";
+
+try{
+if(!currentCitizen){
+await citizenReady;
+}
+if(!currentCitizen){
+throw new Error("የዜጋ መግቢያ አልተገናኘም።");
+}
+
+const q=query(
+collection(citizenDb,"requests"),
+where("ownerUid","==",currentCitizen.uid)
+);
+
+const snapshot=await getDocs(q);
+output.textContent="";
+
+if(snapshot.empty){
+output.textContent="በዚህ ስልክና ብራውዘር ያቀረቡት ጉዳይ አልተገኘም። ጉዳዩን ባቀረቡበት መሣሪያ ይሞክሩ።";
+return;
+}
+
+const docs=snapshot.docs.sort((a,b)=>{
+const at=a.data().createdAt?.toMillis?.()||0;
+const bt=b.data().createdAt?.toMillis?.()||0;
+return bt-at;
+});
+
+docs.forEach(snap=>{
+const data=snap.data();
+const card=document.createElement("div");
+card.className="ticket";
+
+const title=document.createElement("h3");
+title.textContent=(data.service||"")+" · "+(data.issueType||"");
+
+const details=document.createElement("p");
+details.textContent="ቀበሌ፦ "+(data.kebele||"");
+
+const status=document.createElement("p");
+status.textContent="ሁኔታ፦ "+(data.status||"አዲስ");
+
+const code=document.createElement("p");
+code.textContent="መከታተያ ቁጥር፦ "+(data.trackingCode||"");
+
+const desc=document.createElement("p");
+desc.textContent="ያቀረቡት ጉዳይ፦ "+(data.description||"");
+
+const replyBox=document.createElement("div");
+replyBox.style.cssText="background:#e8f5ee;padding:12px;border-radius:8px;margin-top:12px;white-space:pre-wrap";
+
+if(data.adminReply && data.adminReply.trim()){
+replyBox.textContent="የአስተዳዳሪ ምላሽ፦\n"+data.adminReply;
+}else{
+replyBox.textContent="የአስተዳዳሪ ምላሽ እየተጠበቀ ነው።";
+}
+
+card.append(title,details,status,code,desc,replyBox);
+output.appendChild(card);
+});
+
+}catch(error){
+console.error(error);
+showMessage(output,"ጉዳዮችን ማምጣት አልተቻለም፦ "+error.message);
+}
+}
+
 $("refreshMine").addEventListener("click",loadMyRequests);
 
-/* የአስተዳዳሪ መግቢያ */
-$("loginBtn").addEventListener("click", async () => {
-  if (!auth || !db) {
-    showMessage($("loginMessage"), "Firebase አልተገናኘም።");
-    return;
-  }
+/* የአስተዳዳሪ መግቢያ - የተለየ Auth */
+$("loginBtn").addEventListener("click",async()=>{
+if(!adminAuth||!adminDb){
+showMessage($("loginMessage"),"Firebase አልተገናኘም።");
+return;
+}
 
-  const email = $("adminEmail").value.trim().toLowerCase();
-  const password = $("adminPassword").value;
+const email=$("adminEmail").value.trim().toLowerCase();
+const password=$("adminPassword").value;
 
-  if (!email || !password) {
-    showMessage($("loginMessage"), "ኢሜይልና የይለፍ ቃል ያስገቡ።");
-    return;
-  }
+if(!email||!password){
+showMessage($("loginMessage"),"ኢሜይልና የይለፍ ቃል ያስገቡ።");
+return;
+}
 
-  const button = $("loginBtn");
-  button.disabled = true;
+const button=$("loginBtn");
+button.disabled=true;
 
-  try {
-    const credential = await signInWithEmailAndPassword(auth, email, password);
+try{
+const credential=await signInWithEmailAndPassword(adminAuth,email,password);
 
-    if (credential.user.email !== "legessechumburo513@gmail.com") {
-      await signOut(auth);
-      showMessage($("loginMessage"), "የአስተዳዳሪ ፈቃድ የለዎትም።");
-      return;
-    }
+if(credential.user.email.toLowerCase()!=="legessechumburo513@gmail.com"){
+await signOut(adminAuth);
+showMessage($("loginMessage"),"የአስተዳዳሪ ፈቃድ የለዎትም።");
+return;
+}
 
-    hideAllPages();
-    $("adminDashboard").classList.remove("hidden");
-    $("loginMessage").textContent = "";
-    await loadAdminRequests();
+hideAllPages();
+$("adminDashboard").classList.remove("hidden");
+$("loginMessage").textContent="";
+await loadAdminRequests();
 
-  } catch (error) {
-    console.error(error);
-    showMessage($("loginMessage"), "መግባት አልተቻለም፦ " + error.message);
-  } finally {
-    button.disabled = false;
-  }
+}catch(error){
+console.error(error);
+showMessage($("loginMessage"),"መግባት አልተቻለም፦ "+error.message);
+}finally{
+button.disabled=false;
+}
 });
-
-/* አስተዳዳሪ መግቢያ */
-
 
 /* የአስተዳዳሪ ጉዳዮች */
 async function loadAdminRequests(){
- if(!db||!auth.currentUser)return;
- const output=$("adminRequests");
- output.textContent="መረጃ እየተጫነ ነው...";
- try{
-  const snapshot=await getDocs(query(
-   collection(db,"requests"),orderBy("createdAt","desc")));
-  allRequests=snapshot.docs.map(d=>({id:d.id,...d.data()}));
-  $("totalCount").textContent=allRequests.length;
-  $("openCount").textContent=allRequests.filter(x=>x.status!=="ተጠናቋል").length;
-  $("closedCount").textContent=allRequests.filter(x=>x.status==="ተጠናቋል").length;
-  renderAdminRequests();
- }catch(error){
-  console.error(error);
-  showMessage(output,"ጉዳዮችን ማምጣት አልተቻለም፦ "+error.message);
- }
+if(!adminDb||!adminAuth.currentUser)return;
+
+const output=$("adminRequests");
+output.textContent="መረጃ እየተጫነ ነው...";
+
+try{
+const snapshot=await getDocs(query(
+collection(adminDb,"requests")
+));
+
+allRequests=snapshot.docs.map(d=>({id:d.id,...d.data()}));
+
+allRequests.sort((a,b)=>{
+const at=a.createdAt?.toMillis?.()||0;
+const bt=b.createdAt?.toMillis?.()||0;
+return bt-at;
+});
+
+$("totalCount").textContent=allRequests.length;
+$("openCount").textContent=allRequests.filter(x=>x.status!=="ተጠናቋል").length;
+$("closedCount").textContent=allRequests.filter(x=>x.status==="ተጠናቋል").length;
+
+renderAdminRequests();
+
+}catch(error){
+console.error(error);
+showMessage(output,"ጉዳዮችን ማምጣት አልተቻለም፦ "+error.message);
+}
 }
 
 function renderAdminRequests(){
- const output=$("adminRequests");
- output.textContent="";
- const k=$("filterKebele").value;
- const s=$("filterService").value;
- const st=$("filterStatus").value;
- const filtered=allRequests.filter(item=>
-  (!k||item.kebele===k)&&
-  (!s||item.service===s)&&
-  (!st||item.status===st)
- );
- if(!filtered.length){
-  output.textContent="የተገኘ ጉዳይ የለም።";
-  return;
- }
- filtered.forEach(item=>{
-  const card=document.createElement("div");
-  card.className="ticket";
-  const title=document.createElement("h3");
-  title.textContent=(item.service||"")+" · "+(item.issueType||"");
-  const kebele=document.createElement("p");
-  kebele.textContent="ቀበሌ፦ "+(item.kebele||"");
-  const name=document.createElement("p");
-  name.textContent="ስም፦ "+(item.citizenName||"አልተገለጸም");
-  const phone=document.createElement("p");
-  phone.textContent="ስልክ፦ "+(item.phone||"አልተገለጸም");
-  const code=document.createElement("p");
-  code.textContent="መከታተያ፦ "+(item.trackingCode||"");
-  const description=document.createElement("p");
-  description.textContent="የጉዳይ መግለጫ፦ "+(item.description||"");
-  const replyLabel=document.createElement("label");
-  replyLabel.textContent="የአስተዳዳሪ ምላሽ";
-  const reply=document.createElement("textarea");
-  reply.value=item.adminReply||"";
-  reply.maxLength=3000;
-  const statusLabel=document.createElement("label");
-  statusLabel.textContent="የጉዳዩ ሁኔታ";
-  const status=document.createElement("select");
-  ["አዲስ","በሂደት","ተጠናቋል"].forEach(value=>{
-   const option=document.createElement("option");
-   option.value=value;option.textContent=value;status.appendChild(option);
-  });
-  status.value=item.status||"አዲስ";
-  const save=document.createElement("button");
-  save.className="btn";
-  save.textContent="ምላሽና ሁኔታ አስቀምጥ";
-  save.addEventListener("click",async()=>{
-   save.disabled=true;
-   try{
-    await updateDoc(doc(db,"requests",item.id),{
-     adminReply:reply.value.trim(),
-     status:status.value,
-     updatedAt:serverTimestamp()
-    });
-    showMessage(card,"ምላሹና የጉዳዩ ሁኔታ ተቀምጧል።",true);
-    await loadAdminRequests();
-   }catch(error){
-    showMessage(card,"ማስቀመጥ አልተቻለም፦ "+error.message);
-   }finally{save.disabled=false;}
-  });
-  card.append(title,kebele,name,phone,code,description,
-   replyLabel,reply,statusLabel,status,save);
-  output.appendChild(card);
- });
+const output=$("adminRequests");
+output.textContent="";
+
+const k=$("filterKebele").value;
+const s=$("filterService").value;
+const st=$("filterStatus").value;
+
+const filtered=allRequests.filter(item=>
+(!k||item.kebele===k)&&
+(!s||item.service===s)&&
+(!st||item.status===st)
+);
+
+if(!filtered.length){
+output.textContent="የተገኘ ጉዳይ የለም።";
+return;
+}
+
+filtered.forEach(item=>{
+const card=document.createElement("div");
+card.className="ticket";
+
+const title=document.createElement("h3");
+title.textContent=(item.service||"")+" · "+(item.issueType||"");
+
+const kebele=document.createElement("p");
+kebele.textContent="ቀበሌ፦ "+(item.kebele||"");
+
+const name=document.createElement("p");
+name.textContent="ስም፦ "+(item.citizenName||"አልተገለጸም");
+
+const phone=document.createElement("p");
+phone.textContent="ስልክ፦ "+(item.phone||"አልተገለጸም");
+
+const code=document.createElement("p");
+code.textContent="መከታተያ፦ "+(item.trackingCode||"");
+
+const description=document.createElement("p");
+description.textContent="የጉዳይ መግለጫ፦ "+(item.description||"");
+
+const replyLabel=document.createElement("label");
+replyLabel.textContent="የአስተዳዳሪ ምላሽ";
+
+const reply=document.createElement("textarea");
+reply.value=item.adminReply||"";
+reply.maxLength=3000;
+reply.placeholder="ለዜጋው የሚሰጠውን ምላሽ እዚህ ይጻፉ...";
+
+const statusLabel=document.createElement("label");
+statusLabel.textContent="የጉዳዩ ሁኔታ";
+
+const status=document.createElement("select");
+["አዲስ","በሂደት","ተጠናቋል"].forEach(value=>{
+const option=document.createElement("option");
+option.value=value;
+option.textContent=value;
+status.appendChild(option);
+});
+status.value=item.status||"አዲስ";
+
+const save=document.createElement("button");
+save.className="btn";
+save.textContent="ምላሽና ሁኔታ አስቀምጥ";
+
+save.addEventListener("click",async()=>{
+save.disabled=true;
+
+try{
+await updateDoc(doc(adminDb,"requests",item.id),{
+adminReply:reply.value.trim(),
+status:status.value,
+updatedAt:serverTimestamp()
+});
+
+showMessage(card,"ምላሹና የጉዳዩ ሁኔታ በተሳካ ሁኔታ ተቀምጧል።",true);
+await loadAdminRequests();
+
+}catch(error){
+console.error(error);
+showMessage(card,"ማስቀመጥ አልተቻለም፦ "+error.message);
+}finally{
+save.disabled=false;
+}
+});
+
+card.append(
+title,kebele,name,phone,code,description,
+replyLabel,reply,statusLabel,status,save
+);
+
+output.appendChild(card);
+});
 }
 
 $("reloadAdmin").addEventListener("click",loadAdminRequests);
 $("filterBtn").addEventListener("click",renderAdminRequests);
+
+/* አስተዳዳሪ ሲወጣ የዜጋው Auth አይነካም */
 $("logoutBtn").addEventListener("click",async()=>{
- if(auth)await signOut(auth);
- allRequests=[];
- window.showHome();
+try{
+if(adminAuth)await signOut(adminAuth);
+allRequests=[];
+$("adminPassword").value="";
+window.showHome();
+}catch(error){
+showMessage($("adminRequests"),"መውጣት አልተቻለም፦ "+error.message);
+}
 });
 </script>
 </body>
