@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#075e54"/>
+  <path d="M80 340 160 220l64 82 68-112 140 150H80Z" fill="#f4c75e"/>
+  <circle cx="360" cy="135" r="42" fill="#fff"/>
+  <text x="256" y="425" font-family="Arial,sans-serif" font-size="76" font-weight="700" text-anchor="middle" fill="#fff">DGWT</text>
+</svg>
