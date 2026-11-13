@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#075e54">
+<meta name="theme-color" content="#075e54"><link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
 <meta name="description" content="የገደብ ወረዳ ዲጂታል የሕዝብ አገልግሎት">
 <title>GEDEB DIGITAL CITY</title>
 <style>
@@ -743,5 +744,13 @@ showMessage($("adminRequests"),"መውጣት አልተቻለም፦ "+error.messa
 }
 });
 </script>
-</body>
+</body><script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(registration => console.log("PWA ready:", registration.scope))
+      .catch(error => console.error("PWA error:", error));
+  });
+}
+</script>
 </html>
