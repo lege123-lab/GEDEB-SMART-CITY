@@ -403,37 +403,48 @@ async function loadMyRequests(){
 }
 $("refreshMine").addEventListener("click",loadMyRequests);
 
-/* አስተዳዳሪ መግቢያ */
-$("loginBtn").addEventListener("click",async()=>{
- if(!auth||!db){
-  showMessage($("loginMessage"),"Firebase አልተገናኘም።");
-  return;
- }
- const email=$("adminEmail").value.trim();
- const password=$("adminPassword").value;
- if(!email||!password){
-  showMessage($("loginMessage"),"ኢሜይልና የይለፍ ቃል ያስገቡ።");
-  return;
- }
- const button=$("loginBtn");
- button.disabled=true;
- try{
-  await signInWithEmailAndPassword(auth,email,password);
-  const user=auth.currentUser;
-  const roleDoc=await getDoc(doc(db,"users",user.uid));
-  if(!roleDoc.exists()||roleDoc.data().role!=="admin"){
-   await signOut(auth);
-   showMessage($("loginMessage"),"ይህ መለያ የአስተዳዳሪ ፈቃድ የለውም።");
-   return;
+/* የአስተዳዳሪ መግቢያ */
+$("loginBtn").addEventListener("click", async () => {
+  if (!auth || !db) {
+    showMessage($("loginMessage"), "Firebase አልተገናኘም።");
+    return;
   }
-  hideAllPages();
-  $("adminDashboard").classList.remove("hidden");
-  await loadAdminRequests();
- }catch(error){
-  console.error(error);
-  showMessage($("loginMessage"),"መግባት አልተቻለም፦ "+error.message);
- }finally{button.disabled=false;}
+
+  const email = $("adminEmail").value.trim().toLowerCase();
+  const password = $("adminPassword").value;
+
+  if (!email || !password) {
+    showMessage($("loginMessage"), "ኢሜይልና የይለፍ ቃል ያስገቡ።");
+    return;
+  }
+
+  const button = $("loginBtn");
+  button.disabled = true;
+
+  try {
+    const credential = await signInWithEmailAndPassword(auth, email, password);
+
+    if (credential.user.email !== "legessechumburo513@gmail.com") {
+      await signOut(auth);
+      showMessage($("loginMessage"), "የአስተዳዳሪ ፈቃድ የለዎትም።");
+      return;
+    }
+
+    hideAllPages();
+    $("adminDashboard").classList.remove("hidden");
+    $("loginMessage").textContent = "";
+    await loadAdminRequests();
+
+  } catch (error) {
+    console.error(error);
+    showMessage($("loginMessage"), "መግባት አልተቻለም፦ " + error.message);
+  } finally {
+    button.disabled = false;
+  }
 });
+
+/* አስተዳዳሪ መግቢያ */
+
 
 /* የአስተዳዳሪ ጉዳዮች */
 async function loadAdminRequests(){
