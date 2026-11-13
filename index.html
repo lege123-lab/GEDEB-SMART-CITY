@@ -165,6 +165,21 @@ footer{background:var(--dark);color:white;text-align:center;padding:22px;line-he
 <button class="btn" id="reloadAdmin">መረጃ አድስ</button>
 <button class="btn red" id="logoutBtn">ውጣ</button>
 </div>
+
+<!-- የአስተዳዳሪ ይለፍ ቃል መቀየሪያ -->
+<div class="card">
+<h3>🔐 የአስተዳዳሪ ይለፍ ቃል ቀይር</h3>
+<div class="notice">ይለፍ ቃልዎን ለመቀየር አሁን የሚጠቀሙትን ይለፍ ቃል እና አዲሱን ያስገቡ። አዲሱ ይለፍ ቃል ቢያንስ 6 ቁምፊዎች ይኑሩት።</div>
+<label for="currentAdminPassword">አሁን ያለው ይለፍ ቃል</label>
+<input id="currentAdminPassword" type="password" autocomplete="current-password">
+<label for="newAdminPassword">አዲስ ይለፍ ቃል</label>
+<input id="newAdminPassword" type="password" minlength="6" autocomplete="new-password">
+<label for="confirmAdminPassword">አዲሱን ይለፍ ቃል ድገም</label>
+<input id="confirmAdminPassword" type="password" minlength="6" autocomplete="new-password">
+<button class="btn" id="changePasswordBtn">ይለፍ ቃል ቀይር</button>
+<div id="passwordMessage"></div>
+</div>
+
 <div class="card">
 <h3>ጉዳዮችን በማጣሪያ ፈልግ</h3>
 <label for="filterKebele">በቀበሌ</label>
@@ -280,7 +295,8 @@ from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 
 import {
 getAuth,onAuthStateChanged,signInAnonymously,
-signInWithEmailAndPassword,signOut
+signInWithEmailAndPassword,signOut,
+EmailAuthProvider,reauthenticateWithCredential,updatePassword
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
 import {
@@ -297,8 +313,10 @@ messagingSenderId:"836252566289",
 appId:"1:836252566289:web:fd0acaa125fe62414042b0"
 };
 
-const $=id=>document.getElementById(id);
+/* የተፈቀደው የአስተዳዳሪ ኢሜይል */
+const ADMIN_EMAIL="legessechumburo513@gmail.com";
 
+const $=id=>document.getElementById(id);
 let citizenApp,citizenAuth,citizenDb;
 let adminApp,adminAuth,adminDb;
 let currentCitizen=null;
@@ -315,13 +333,28 @@ return "GD-"+Date.now().toString(36).toUpperCase()+"-"+
 Math.random().toString(36).slice(2,6).toUpperCase();
 }
 
-/*
-  ዋና ማስተካከያ:
-  የዜጋው Firebase Auth እና የአስተዳዳሪው
-  Firebase Auth በተለያዩ Firebase App ይሰራሉ።
-  ይህ የዜጋውን Anonymous UID እንዳይቀይር ይከላከላል።
-*/
+function isAuthorizedAdmin(user){
+return !!user && user.email &&
+user.email.toLowerCase()===ADMIN_EMAIL.toLowerCase();
+}
 
+function showAdminDashboard(){
+if(!isAuthorizedAdmin(adminAuth?.currentUser)){
+window.showHome();
+return;
+}
+hideAllPages();
+$("adminDashboard").classList.remove("hidden");
+window.scrollTo(0,0);
+}
+
+function hideAllPages(){
+["homePage","detailPage","adminLoginPage","adminDashboard"]
+.forEach(id=>$(id).classList.add("hidden"));
+$("hero").classList.add("hidden");
+}
+
+/* ሁለት የተለያዩ Firebase Auth መለያዎች */
 try{
 citizenApp=initializeApp(firebaseConfig);
 citizenAuth=getAuth(citizenApp);
@@ -333,10 +366,11 @@ adminDb=getFirestore(adminApp);
 
 /* የዜጋ Anonymous መግቢያ */
 citizenReady=new Promise((resolve)=>{
+let resolved=false;
 onAuthStateChanged(citizenAuth,async user=>{
 if(user){
 currentCitizen=user;
-resolve(user);
+if(!resolved){resolved=true;resolve(user);}
 }else{
 currentCitizen=null;
 try{
@@ -344,9 +378,23 @@ await signInAnonymously(citizenAuth);
 }catch(error){
 console.error("Anonymous sign-in:",error);
 $("myTickets").textContent="የዜጋ መግቢያ አልተሳካም። "+error.message;
+if(!resolved){resolved=true;resolve(null);}
 }
 }
 });
+});
+
+/* በቀድሞ የአስተዳዳሪ ሴሽን ውስጥ ከተገባ ፈቃዱን እንደገና ያረጋግጣል */
+onAuthStateChanged(adminAuth,async user=>{
+if(user){
+if(isAuthorizedAdmin(user)){
+showAdminDashboard();
+await loadAdminRequests();
+}else{
+await signOut(adminAuth);
+window.showHome();
+}
+}
 });
 
 }catch(error){
@@ -367,12 +415,8 @@ const button=$("sendBtn");
 button.disabled=true;
 
 try{
-if(!currentCitizen){
-await citizenReady;
-}
-if(!currentCitizen){
-throw new Error("የዜጋ መግቢያ አልተገናኘም።");
-}
+if(!currentCitizen)await citizenReady;
+if(!currentCitizen)throw new Error("የዜጋ መግቢያ አልተገናኘም።");
 
 const code=trackingCode();
 
@@ -395,7 +439,6 @@ showMessage($("formMessage"),
 "ጉዳይዎ በተሳካ ሁኔታ ተልኳል።\n"+
 "የመከታተያ ቁጥርዎ፦ "+code+
 "\nእባክዎ ቁጥሩን ያስቀምጡ።",true);
-
 $("serviceForm").reset();
 
 }catch(error){
@@ -406,29 +449,22 @@ button.disabled=false;
 }
 });
 
-/* የዜጋ ጉዳይና የአስተዳዳሪ ምላሽ ማሳያ */
+/* የዜጋ ጉዳይና ምላሽ */
 async function loadMyRequests(){
 const output=$("myTickets");
 output.textContent="ጉዳዮችዎ እየተፈለጉ ነው...";
 
 try{
-if(!currentCitizen){
-await citizenReady;
-}
-if(!currentCitizen){
-throw new Error("የዜጋ መግቢያ አልተገናኘም።");
-}
+if(!currentCitizen)await citizenReady;
+if(!currentCitizen)throw new Error("የዜጋ መግቢያ አልተገናኘም።");
 
-const q=query(
-collection(citizenDb,"requests"),
-where("ownerUid","==",currentCitizen.uid)
-);
-
+const q=query(collection(citizenDb,"requests"),
+where("ownerUid","==",currentCitizen.uid));
 const snapshot=await getDocs(q);
 output.textContent="";
 
 if(snapshot.empty){
-output.textContent="በዚህ ስልክና ብራውዘር ያቀረቡት ጉዳይ አልተገኘም። ጉዳዩን ባቀረቡበት መሣሪያ ይሞክሩ።";
+output.textContent="በዚህ ስልክና ብራውዘር ያቀረቡት ጉዳይ አልተገኘም።";
 return;
 }
 
@@ -445,27 +481,20 @@ card.className="ticket";
 
 const title=document.createElement("h3");
 title.textContent=(data.service||"")+" · "+(data.issueType||"");
-
 const details=document.createElement("p");
 details.textContent="ቀበሌ፦ "+(data.kebele||"");
-
 const status=document.createElement("p");
 status.textContent="ሁኔታ፦ "+(data.status||"አዲስ");
-
 const code=document.createElement("p");
 code.textContent="መከታተያ ቁጥር፦ "+(data.trackingCode||"");
-
 const desc=document.createElement("p");
 desc.textContent="ያቀረቡት ጉዳይ፦ "+(data.description||"");
 
 const replyBox=document.createElement("div");
 replyBox.style.cssText="background:#e8f5ee;padding:12px;border-radius:8px;margin-top:12px;white-space:pre-wrap";
-
-if(data.adminReply && data.adminReply.trim()){
-replyBox.textContent="የአስተዳዳሪ ምላሽ፦\n"+data.adminReply;
-}else{
-replyBox.textContent="የአስተዳዳሪ ምላሽ እየተጠበቀ ነው።";
-}
+replyBox.textContent=data.adminReply?.trim()
+?"የአስተዳዳሪ ምላሽ፦\n"+data.adminReply
+:"የአስተዳዳሪ ምላሽ እየተጠበቀ ነው።";
 
 card.append(title,details,status,code,desc,replyBox);
 output.appendChild(card);
@@ -476,10 +505,9 @@ console.error(error);
 showMessage(output,"ጉዳዮችን ማምጣት አልተቻለም፦ "+error.message);
 }
 }
-
 $("refreshMine").addEventListener("click",loadMyRequests);
 
-/* የአስተዳዳሪ መግቢያ - የተለየ Auth */
+/* የአስተዳዳሪ መግቢያ */
 $("loginBtn").addEventListener("click",async()=>{
 if(!adminAuth||!adminDb){
 showMessage($("loginMessage"),"Firebase አልተገናኘም።");
@@ -500,15 +528,14 @@ button.disabled=true;
 try{
 const credential=await signInWithEmailAndPassword(adminAuth,email,password);
 
-if(credential.user.email.toLowerCase()!=="legessechumburo513@gmail.com"){
+if(!isAuthorizedAdmin(credential.user)){
 await signOut(adminAuth);
 showMessage($("loginMessage"),"የአስተዳዳሪ ፈቃድ የለዎትም።");
 return;
 }
 
-hideAllPages();
-$("adminDashboard").classList.remove("hidden");
 $("loginMessage").textContent="";
+showAdminDashboard();
 await loadAdminRequests();
 
 }catch(error){
@@ -519,18 +546,74 @@ button.disabled=false;
 }
 });
 
+/* የይለፍ ቃል መቀየሪያ */
+$("changePasswordBtn").addEventListener("click",async()=>{
+const user=adminAuth?.currentUser;
+const current=$("currentAdminPassword").value;
+const newPassword=$("newAdminPassword").value;
+const confirmPassword=$("confirmAdminPassword").value;
+const button=$("changePasswordBtn");
+
+if(!isAuthorizedAdmin(user)){
+showMessage($("passwordMessage"),"ይህን ለማድረግ የአስተዳዳሪ ፈቃድ ያስፈልጋል።");
+return;
+}
+if(!current||!newPassword||!confirmPassword){
+showMessage($("passwordMessage"),"ሁሉንም የይለፍ ቃል ቦታዎች ይሙሉ።");
+return;
+}
+if(newPassword.length<6){
+showMessage($("passwordMessage"),"አዲሱ ይለፍ ቃል ቢያንስ 6 ቁምፊዎች መሆን አለበት።");
+return;
+}
+if(newPassword!==confirmPassword){
+showMessage($("passwordMessage"),"አዲሱ ይለፍ ቃልና ማረጋገጫው አይመሳሰሉም።");
+return;
+}
+if(current===newPassword){
+showMessage($("passwordMessage"),"አዲሱ ይለፍ ቃል ከአሁኑ የተለየ ይሁን።");
+return;
+}
+
+button.disabled=true;
+try{
+const credential=EmailAuthProvider.credential(user.email,current);
+await reauthenticateWithCredential(user,credential);
+await updatePassword(user,newPassword);
+
+$("currentAdminPassword").value="";
+$("newAdminPassword").value="";
+$("confirmAdminPassword").value="";
+showMessage($("passwordMessage"),"የይለፍ ቃልዎ በተሳካ ሁኔታ ተቀይሯል። አዲሱን ይለፍ ቃል በደህና ያስቀምጡ።",true);
+
+}catch(error){
+console.error(error);
+if(error.code==="auth/wrong-password"||error.code==="auth/invalid-credential"){
+showMessage($("passwordMessage"),"ያስገቡት የአሁኑ ይለፍ ቃል ትክክል አይደለም።");
+}else if(error.code==="auth/weak-password"){
+showMessage($("passwordMessage"),"አዲሱ ይለፍ ቃል ጠንካራ ይሁን።");
+}else if(error.code==="auth/requires-recent-login"){
+showMessage($("passwordMessage"),"እባክዎ ውጣ ብለው እንደገና ይግቡ፤ ከዚያ ይለፍ ቃሉን ይቀይሩ።");
+}else{
+showMessage($("passwordMessage"),"ይለፍ ቃሉን መቀየር አልተቻለም፦ "+error.message);
+}
+}finally{
+button.disabled=false;
+}
+});
+
 /* የአስተዳዳሪ ጉዳዮች */
 async function loadAdminRequests(){
-if(!adminDb||!adminAuth.currentUser)return;
+if(!adminDb||!isAuthorizedAdmin(adminAuth.currentUser)){
+window.showHome();
+return;
+}
 
 const output=$("adminRequests");
 output.textContent="መረጃ እየተጫነ ነው...";
 
 try{
-const snapshot=await getDocs(query(
-collection(adminDb,"requests")
-));
-
+const snapshot=await getDocs(query(collection(adminDb,"requests")));
 allRequests=snapshot.docs.map(d=>({id:d.id,...d.data()}));
 
 allRequests.sort((a,b)=>{
@@ -552,6 +635,11 @@ showMessage(output,"ጉዳዮችን ማምጣት አልተቻለም፦ "+error.m
 }
 
 function renderAdminRequests(){
+if(!isAuthorizedAdmin(adminAuth.currentUser)){
+$("adminRequests").textContent="የአስተዳዳሪ ፈቃድ የለዎትም።";
+return;
+}
+
 const output=$("adminRequests");
 output.textContent="";
 
@@ -576,25 +664,19 @@ card.className="ticket";
 
 const title=document.createElement("h3");
 title.textContent=(item.service||"")+" · "+(item.issueType||"");
-
 const kebele=document.createElement("p");
 kebele.textContent="ቀበሌ፦ "+(item.kebele||"");
-
 const name=document.createElement("p");
 name.textContent="ስም፦ "+(item.citizenName||"አልተገለጸም");
-
 const phone=document.createElement("p");
 phone.textContent="ስልክ፦ "+(item.phone||"አልተገለጸም");
-
 const code=document.createElement("p");
 code.textContent="መከታተያ፦ "+(item.trackingCode||"");
-
 const description=document.createElement("p");
 description.textContent="የጉዳይ መግለጫ፦ "+(item.description||"");
 
 const replyLabel=document.createElement("label");
 replyLabel.textContent="የአስተዳዳሪ ምላሽ";
-
 const reply=document.createElement("textarea");
 reply.value=item.adminReply||"";
 reply.maxLength=3000;
@@ -602,7 +684,6 @@ reply.placeholder="ለዜጋው የሚሰጠውን ምላሽ እዚህ ይጻፉ
 
 const statusLabel=document.createElement("label");
 statusLabel.textContent="የጉዳዩ ሁኔታ";
-
 const status=document.createElement("select");
 ["አዲስ","በሂደት","ተጠናቋል"].forEach(value=>{
 const option=document.createElement("option");
@@ -617,18 +698,19 @@ save.className="btn";
 save.textContent="ምላሽና ሁኔታ አስቀምጥ";
 
 save.addEventListener("click",async()=>{
+if(!isAuthorizedAdmin(adminAuth.currentUser)){
+showMessage(card,"የአስተዳዳሪ ፈቃድ የለዎትም።");
+return;
+}
 save.disabled=true;
-
 try{
 await updateDoc(doc(adminDb,"requests",item.id),{
 adminReply:reply.value.trim(),
 status:status.value,
 updatedAt:serverTimestamp()
 });
-
 showMessage(card,"ምላሹና የጉዳዩ ሁኔታ በተሳካ ሁኔታ ተቀምጧል።",true);
 await loadAdminRequests();
-
 }catch(error){
 console.error(error);
 showMessage(card,"ማስቀመጥ አልተቻለም፦ "+error.message);
@@ -637,11 +719,8 @@ save.disabled=false;
 }
 });
 
-card.append(
-title,kebele,name,phone,code,description,
-replyLabel,reply,statusLabel,status,save
-);
-
+card.append(title,kebele,name,phone,code,description,
+replyLabel,reply,statusLabel,status,save);
 output.appendChild(card);
 });
 }
@@ -649,12 +728,15 @@ output.appendChild(card);
 $("reloadAdmin").addEventListener("click",loadAdminRequests);
 $("filterBtn").addEventListener("click",renderAdminRequests);
 
-/* አስተዳዳሪ ሲወጣ የዜጋው Auth አይነካም */
+/* አስተዳዳሪ ሲወጣ */
 $("logoutBtn").addEventListener("click",async()=>{
 try{
 if(adminAuth)await signOut(adminAuth);
 allRequests=[];
 $("adminPassword").value="";
+$("currentAdminPassword").value="";
+$("newAdminPassword").value="";
+$("confirmAdminPassword").value="";
 window.showHome();
 }catch(error){
 showMessage($("adminRequests"),"መውጣት አልተቻለም፦ "+error.message);
