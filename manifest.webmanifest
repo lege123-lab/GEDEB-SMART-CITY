@@ -1,0 +1,21 @@
+{
+  "id": "./",
+  "name": "Digital Gedeb Woreda and Town",
+  "short_name": "Digital Gedeb",
+  "description": "ዲጂታል ገደብ ወረዳና ከተማ",
+  "lang": "am",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f2f6f5",
+  "theme_color": "#075e54",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
